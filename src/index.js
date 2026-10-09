@@ -48,7 +48,10 @@ if (url.pathname === "/api/membership" && request.method === "POST") {
     );
   } catch (error) {
     return Response.json(
-      { success: false, message: "تعذر إرسال الطلب. يرجى المحاولة لاحقًا." },
+      {
+        success: false,
+        message: "تعذر إرسال الطلب. يرجى المحاولة لاحقًا."
+      },
       { status: 500 }
     );
   }
