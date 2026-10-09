@@ -1,11 +1,19 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>نادي شباب المدينة الدبة | الموقع الرسمي</title>
-<meta name="description" content="الموقع الرسمي لنادي شباب المدينة الدبة. تابع أخبار النادي ونتائج المباريات وأنشطة الفريق.">
-<meta name="theme-color" content="#59070b"><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>نادي شباب المدينة الدبة | الموقع الرسمي</title>
+
+<meta name="description" content="الموقع الرسمي لنادي شباب المدينة الدبة. تابع أخبار النادي ونتائج المباريات وأنشطة الفريق وسجل عضويتك إلكترونيًا.">
+<meta name="theme-color" content="#59070b">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
 :root {
   --red: #59070b;
   --red-light: #7d1118;
@@ -303,6 +311,8 @@ header {
   letter-spacing: .5px;
 }
 
+/* الأخبار */
+
 .news-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -369,7 +379,7 @@ header {
   font-size: 12px;
 }
 
-/* قسم النادي */
+/* عن النادي */
 
 .about {
   background: white;
@@ -418,6 +428,158 @@ header {
   color: var(--muted);
   font-size: 14px;
   margin-bottom: 20px;
+}
+
+/* العضوية الإلكترونية */
+
+.membership-section {
+  background: #f8f6f6;
+}
+
+.membership-box {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px;
+  max-width: 760px;
+  margin: auto;
+  box-shadow: 0 8px 25px rgba(0,0,0,.04);
+}
+
+.membership-intro {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.membership-intro h3 {
+  color: var(--red);
+  font-size: 23px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.membership-intro p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.payment-details {
+  background: #faf4f4;
+  border: 1px solid #ecd9da;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.payment-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eadada;
+  font-size: 14px;
+}
+
+.payment-row:last-child {
+  border-bottom: none;
+}
+
+.payment-row span {
+  color: var(--muted);
+}
+
+.payment-row strong {
+  color: var(--red);
+  font-weight: 900;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.membership-form {
+  display: grid;
+  gap: 16px;
+}
+
+.form-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 7px;
+}
+
+.form-field input {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #fff;
+  outline: none;
+}
+
+.form-field input:focus {
+  border-color: var(--red);
+}
+
+.form-note {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.membership-submit,
+.whatsapp-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.membership-submit {
+  background: var(--red);
+  color: #fff;
+}
+
+.membership-submit:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+.whatsapp-button {
+  background: #167c46;
+  color: #fff;
+  margin-top: 12px;
+}
+
+.membership-message {
+  display: none;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 13px;
+  margin-top: 15px;
+  overflow-wrap: anywhere;
+}
+
+.membership-message.success {
+  display: block;
+  background: #e9f7ef;
+  color: #17663b;
+}
+
+.membership-message.error {
+  display: block;
+  background: #fff0f0;
+  color: #a30000;
 }
 
 /* التذييل */
@@ -568,178 +730,434 @@ footer {
   .about-text h2 {
     font-size: 24px;
   }
+
+  .membership-box {
+    padding: 18px;
+  }
+
+  .membership-intro h3 {
+    font-size: 20px;
+  }
+
+  .payment-row {
+    font-size: 12px;
+  }
 }
-</style></head><body><div class="topbar">
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
   <div class="container topbar-inner">
     <span>الموقع الرسمي لنادي شباب المدينة الدبة</span>
     <span>الولاية الشمالية — السودان</span>
   </div>
-</div><header>
-  <div class="container header-inner"><a href="#home" class="brand">
-  <div class="club-symbol">
-    <strong>ش</strong>
-    <span>المدينة</span>
-  </div>
+</div>
 
-  <div class="brand-text">
-    <h1>نادي شباب المدينة</h1>
-    <p>الدبة · الولاية الشمالية · السودان</p>
-  </div>
-</a>
+<header>
+  <div class="container header-inner">
 
-<nav class="menu" aria-label="القائمة الرئيسية">
-  <a href="#home">الرئيسية</a>
-  <a href="#news">أخبار النادي</a>
-  <a href="#about">عن النادي</a>
-  <a href="#contact">تواصل معنا</a>
-  <a href="#membership" class="membership">العضوية الإلكترونية</a>
-</nav>
+    <a href="#home" class="brand">
+      <div class="club-symbol">
+        <strong>ش</strong>
+        <span>المدينة</span>
+      </div>
+
+      <div class="brand-text">
+        <h1>نادي شباب المدينة</h1>
+        <p>الدبة · الولاية الشمالية · السودان</p>
+      </div>
+    </a>
+
+    <nav class="menu" aria-label="القائمة الرئيسية">
+      <a href="#home">الرئيسية</a>
+      <a href="#news">أخبار النادي</a>
+      <a href="#about">عن النادي</a>
+      <a href="#contact">تواصل معنا</a>
+      <a href="#membership" class="membership">العضوية الإلكترونية</a>
+    </nav>
 
   </div>
-</header><main><section class="hero" id="home">
+</header>
+
+<main>
+
+<section class="hero" id="home">
   <div class="container hero-inner">
-    <div class="hero-content">  <span class="eyebrow">أهلًا بكم في بيت المدينة</span>
 
-  <h2>
-    شباب المدينة<br>
-    <span>حكاية انتماء وطموح</span>
-  </h2>
+    <div class="hero-content">
+      <span class="eyebrow">أهلًا بكم في بيت المدينة</span>
 
-  <p>
-    من الدبة تبدأ الحكاية. هنا يجتمع الشغف الرياضي وروح المجتمع
-    تحت راية نادي شباب المدينة، حيث نصنع الذكريات ونمضي نحو المستقبل.
-  </p>
+      <h2>
+        شباب المدينة<br>
+        <span>حكاية انتماء وطموح</span>
+      </h2>
 
-  <div class="hero-actions">
-    <a href="#news" class="button button-white">اكتشف أخبار النادي</a>
-    <a href="#about" class="button button-outline">تعرف على النادي</a>
-  </div>
+      <p>
+        من الدبة تبدأ الحكاية. هنا يجتمع الشغف الرياضي وروح المجتمع
+        تحت راية نادي شباب المدينة، حيث نصنع الذكريات ونمضي نحو المستقبل.
+      </p>
 
-</div>
-
-  </div>
-</section><section class="stats" aria-label="معلومات النادي">
-  <div class="container stats-grid"><div class="stat">
-  <strong>الدبة</strong>
-  <span>موطن النادي</span>
-</div>
-
-<div class="stat">
-  <strong>شباب المدينة</strong>
-  <span>اسم يجمعنا</span>
-</div>
-
-<div class="stat">
-  <strong>السودان</strong>
-  <span>الانتماء والوطن</span>
-</div>
-
-  </div>
-</section><section class="section" id="news">
-  <div class="container"><div class="section-heading">
-  <div>
-    <span class="section-label">المركز الإعلامي</span>
-    <h2>أخبار النادي</h2>
-    <p>تابع أخبار وفعاليات نادي شباب المدينة الدبة.</p>
-  </div>
-</div>
-
-<div class="news-grid">
-
-  <article class="news-card">
-    <div class="news-image">
-      شباب المدينة
+      <div class="hero-actions">
+        <a href="#news" class="button button-white">اكتشف أخبار النادي</a>
+        <a href="#about" class="button button-outline">تعرف على النادي</a>
+      </div>
     </div>
-    <div class="news-content">
-      <span class="news-tag">أخبار النادي</span>
-      <h3>مرحبًا بكم في الموقع الرسمي لنادي شباب المدينة</h3>
-      <p>منصة النادي الإلكترونية ومساحة تجمع جماهيره ومحبيه.</p>
-    </div>
-  </article>
-
-  <article class="news-card">
-    <div class="news-image light">
-      المركز الإعلامي
-    </div>
-    <div class="news-content">
-      <span class="news-tag">المركز الإعلامي</span>
-      <h3>مساحة جديدة لأخبار الفريق وأنشطته</h3>
-      <p>سيتم تخصيص هذا القسم لنشر الأخبار والتغطيات الإعلامية.</p>
-    </div>
-  </article>
-
-  <article class="news-card">
-    <div class="news-image dark">
-      جماهير المدينة
-    </div>
-    <div class="news-content">
-      <span class="news-tag">مجتمع النادي</span>
-      <h3>جماهيرنا جزء من حكاية النادي</h3>
-      <p>مساحة للاحتفاء بالجماهير والمبادرات والأنشطة المجتمعية.</p>
-    </div>
-  </article>
-
-</div>
 
   </div>
-</section><section class="section about" id="about">
-  <div class="container about-inner"><div class="about-mark">
-  <div>
-    <strong>شباب المدينة</strong>
-    <span>الدبة — الولاية الشمالية</span>
-  </div>
-</div>
+</section>
 
-<div class="about-text">
-  <span class="section-label">هويتنا</span>
-  <h2>نادي يجمعنا</h2>
+<section class="stats" aria-label="معلومات النادي">
+  <div class="container stats-grid">
 
-  <p>
-    نادي شباب المدينة الدبة مساحة رياضية واجتماعية تجمع اللاعبين
-    والجماهير ومحبي الرياضة، وتعمل على ترسيخ روح الانتماء والتعاون
-    وتمثيل المدينة بصورة تليق بأهلها.
-  </p>
+    <div class="stat">
+      <strong>الدبة</strong>
+      <span>موطن النادي</span>
+    </div>
 
-  <a href="#contact" class="button" style="background:var(--red);color:white">
-    تواصل مع النادي
-  </a>
-</div>
+    <div class="stat">
+      <strong>شباب المدينة</strong>
+      <span>اسم يجمعنا</span>
+    </div>
+
+    <div class="stat">
+      <strong>السودان</strong>
+      <span>الانتماء والوطن</span>
+    </div>
 
   </div>
-</section><section class="section" id="membership">
+</section>
+
+<section class="section" id="news">
   <div class="container">
+
+    <div class="section-heading">
+      <div>
+        <span class="section-label">المركز الإعلامي</span>
+        <h2>أخبار النادي</h2>
+        <p>تابع أخبار وفعاليات نادي شباب المدينة الدبة.</p>
+      </div>
+    </div>
+
+    <div class="news-grid">
+
+      <article class="news-card">
+        <div class="news-image">شباب المدينة</div>
+        <div class="news-content">
+          <span class="news-tag">أخبار النادي</span>
+          <h3>مرحبًا بكم في الموقع الرسمي لنادي شباب المدينة</h3>
+          <p>منصة النادي الإلكترونية ومساحة تجمع جماهيره ومحبيه.</p>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="news-image light">المركز الإعلامي</div>
+        <div class="news-content">
+          <span class="news-tag">المركز الإعلامي</span>
+          <h3>مساحة جديدة لأخبار الفريق وأنشطته</h3>
+          <p>سيتم تخصيص هذا القسم لنشر الأخبار والتغطيات الإعلامية.</p>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="news-image dark">جماهير المدينة</div>
+        <div class="news-content">
+          <span class="news-tag">مجتمع النادي</span>
+          <h3>جماهيرنا جزء من حكاية النادي</h3>
+          <p>مساحة للاحتفاء بالجماهير والمبادرات والأنشطة المجتمعية.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section about" id="about">
+  <div class="container about-inner">
+
+    <div class="about-mark">
+      <div>
+        <strong>شباب المدينة</strong>
+        <span>الدبة — الولاية الشمالية</span>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <span class="section-label">هويتنا</span>
+      <h2>نادي يجمعنا</h2>
+
+      <p>
+        نادي شباب المدينة الدبة مساحة رياضية واجتماعية تجمع اللاعبين
+        والجماهير ومحبي الرياضة، وتعمل على ترسيخ روح الانتماء والتعاون
+        وتمثيل المدينة بصورة تليق بأهلها.
+      </p>
+
+      <a href="#contact" class="button" style="background:var(--red);color:white">
+        تواصل مع النادي
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- العضوية الإلكترونية -->
+
+<section class="section membership-section" id="membership">
+  <div class="container">
+
     <div class="section-heading">
       <div>
         <span class="section-label">كن جزءًا من الحكاية</span>
         <h2>العضوية الإلكترونية</h2>
-        <p>سيتم تطوير نظام إلكتروني للتعريف بعضوية النادي وتسجيل الأعضاء.</p>
+        <p>سجّل بياناتك وقدّم طلب العضوية في نادي شباب المدينة الدبة.</p>
       </div>
     </div>
+
+    <div class="membership-box">
+
+      <div class="membership-intro">
+        <h3>طلب عضوية نادي شباب المدينة</h3>
+        <p>يرجى مراجعة بيانات الحساب ورسوم العضوية قبل التسجيل.</p>
+      </div>
+
+      <div class="payment-details">
+
+        <div class="payment-row">
+          <span>اسم الحساب</span>
+          <strong>نادي شباب المدينة الدبة</strong>
+        </div>
+
+        <div class="payment-row">
+          <span>البنك</span>
+          <strong>بنك الخرطوم</strong>
+        </div>
+
+        <div class="payment-row">
+          <span>رقم الحساب</span>
+          <strong dir="ltr">3399226</strong>
+        </div>
+
+        <div class="payment-row">
+          <span>رسوم العضوية</span>
+          <strong>20,000 جنيه سوداني</strong>
+        </div>
+
+      </div>
+
+      <form id="membershipForm" class="membership-form">
+
+        <div class="form-field">
+          <label for="full_name">الاسم الكامل *</label>
+          <input
+            type="text"
+            id="full_name"
+            name="full_name"
+            placeholder="أدخل اسمك الكامل"
+            minlength="3"
+            maxlength="150"
+            autocomplete="name"
+            required
+          >
+        </div>
+
+        <div class="form-field">
+          <label for="phone">رقم الهاتف *</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="أدخل رقم هاتفك"
+            minlength="6"
+            maxlength="30"
+            autocomplete="tel"
+            dir="ltr"
+            required
+          >
+        </div>
+
+        <div class="form-field">
+          <label for="payment_reference">رقم مرجع الدفع</label>
+          <input
+            type="text"
+            id="payment_reference"
+            name="payment_reference"
+            placeholder="أدخل رقم العملية إن توفر"
+            maxlength="100"
+          >
+          <p class="form-note">
+            يمكنك ترك هذا الحقل فارغًا وإرسال إشعار الدفع عبر واتساب بعد تسجيل الطلب.
+          </p>
+        </div>
+
+        <button type="submit" id="submitButton" class="membership-submit">
+          إرسال طلب العضوية
+        </button>
+
+      </form>
+
+      <div id="membershipMessage" class="membership-message" role="status" aria-live="polite"></div>
+
+      <div id="whatsappArea" hidden>
+        <a
+          id="whatsappButton"
+          class="whatsapp-button"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          إرسال إشعار الدفع عبر واتساب
+        </a>
+
+        <p class="form-note" style="margin-top:10px">
+          بعد فتح واتساب، يمكنك إرفاق صورة إيصال الدفع وإرسالها إلى مسؤول مراجعة العضوية.
+          لن يُعتمد الطلب نهائيًا إلا بعد مراجعة الدفع من إدارة النادي.
+        </p>
+      </div>
+
+    </div>
   </div>
-</section></main><footer id="contact">
-  <div class="container"><div class="footer-top">
+</section>
 
-  <div class="footer-brand">
-    <h2>نادي شباب المدينة الدبة</h2>
-    <p>
-      الموقع الإلكتروني للنادي ومساحته الرسمية للتواصل مع الجماهير
-      ومتابعة الأخبار والأنشطة.
-    </p>
+</main>
+
+<footer id="contact">
+  <div class="container">
+
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        <h2>نادي شباب المدينة الدبة</h2>
+        <p>
+          الموقع الإلكتروني للنادي ومساحته الرسمية للتواصل مع الجماهير
+          ومتابعة الأخبار والأنشطة.
+        </p>
+      </div>
+
+      <nav class="footer-links" aria-label="روابط الموقع">
+        <a href="#home">الرئيسية</a>
+        <a href="#news">الأخبار</a>
+        <a href="#about">عن النادي</a>
+        <a href="#membership">العضوية</a>
+      </nav>
+
+    </div>
+
+    <div class="copyright">
+      جميع الحقوق محفوظة لنادي شباب المدينة الدبة © 2026
+    </div>
+
   </div>
+</footer>
 
-  <nav class="footer-links" aria-label="روابط الموقع">
-    <a href="#home">الرئيسية</a>
-    <a href="#news">الأخبار</a>
-    <a href="#about">عن النادي</a>
-    <a href="#membership">العضوية</a>
-  </nav>
+<script>
+(() => {
+  const form = document.getElementById("membershipForm");
+  const submitButton = document.getElementById("submitButton");
+  const messageBox = document.getElementById("membershipMessage");
+  const whatsappArea = document.getElementById("whatsappArea");
+  const whatsappButton = document.getElementById("whatsappButton");
 
-</div>
+  /*
+    رقم واتساب مسؤول مراجعة إشعارات الدفع.
+    تمت إزالة الصفر الأول وإضافة مفتاح السودان الدولي.
+  */
+  const whatsappNumber = "249100272661";
 
-<div class="copyright">
-  جميع الحقوق محفوظة لنادي شباب المدينة الدبة © 2026
-</div>
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-  </div>
-</footer></body>
+    messageBox.className = "membership-message";
+    messageBox.textContent = "";
+    whatsappArea.hidden = true;
+
+    const fullName = document.getElementById("full_name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const paymentReference = document.getElementById("payment_reference").value.trim();
+
+    if (fullName.length < 3) {
+      showMessage("يرجى إدخال الاسم الكامل بصورة صحيحة.", "error");
+      return;
+    }
+
+    if (phone.length < 6) {
+      showMessage("يرجى إدخال رقم هاتف صحيح.", "error");
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = "جارٍ إرسال الطلب...";
+
+    try {
+      const response = await fetch("/api/membership", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          full_name: fullName,
+          phone: phone,
+          payment_reference: paymentReference
+        })
+      });
+
+      let result;
+
+      try {
+        result = await response.json();
+      } catch {
+        throw new Error("تعذر قراءة استجابة الخادم.");
+      }
+
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.message || "تعذر تسجيل الطلب. يرجى المحاولة لاحقًا."
+        );
+      }
+
+      showMessage(
+        "تم تسجيل طلبك بنجاح. الخطوة التالية هي إرسال إشعار الدفع إلى مسؤول العضوية عبر واتساب.",
+        "success"
+      );
+
+      const whatsappText = [
+        "السلام عليكم، أرسل إشعار دفع رسوم عضوية نادي شباب المدينة الدبة.",
+        "",
+        "الاسم: " + fullName,
+        "رقم الهاتف: " + phone,
+        "رسوم العضوية: 20,000 جنيه سوداني",
+        "البنك: بنك الخرطوم",
+        "رقم الحساب: 3399226",
+        "رقم مرجع الدفع: " + (paymentReference || "سأرفق الإيصال في واتساب"),
+        "",
+        "يرجى مراجعة الطلب وإشعار الدفع."
+      ].join("\n");
+
+      whatsappButton.href =
+        "https://wa.me/" + whatsappNumber +
+        "?text=" + encodeURIComponent(whatsappText);
+
+      whatsappArea.hidden = false;
+
+      form.reset();
+
+    } catch (error) {
+      showMessage(
+        error.message || "تعذر إرسال الطلب. تحقق من اتصال الإنترنت وحاول مرة أخرى.",
+        "error"
+      );
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "إرسال طلب العضوية";
+    }
+  });
+
+  function showMessage(text, type) {
+    messageBox.textContent = text;
+    messageBox.className = "membership-message " + type;
+  }
+})();
+</script>
+
+</body>
 </html>
