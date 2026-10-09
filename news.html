@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#701c2b">
+  <meta name="description" content="آخر أخبار نادي شباب المدينة الدبة">
+  <title>أخبار النادي | شباب المدينة الدبة</title>
+
+  <style>
+    :root {
+      --maroon: #701c2b;
+      --maroon-dark: #4b101c;
+      --gold: #d5b477;
+      --white: #fff;
+      --background: #f5f5f5;
+      --text: #252525;
+      --muted: #777;
+      --border: #e8e8e8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.9;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      background: var(--maroon-dark);
+      color: white;
+      padding: 9px 16px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    header {
+      background: var(--maroon);
+      color: white;
+      padding: 22px 16px 28px;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .header-content {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      width: 78px;
+      height: 78px;
+      object-fit: contain;
+      background: white;
+      border-radius: 50%;
+      padding: 5px;
+      flex-shrink: 0;
+    }
+
+    .club-name {
+      margin: 0;
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      margin: 3px 0 0;
+      color: #f1dfe2;
+      font-size: 14px;
+    }
+
+    nav {
+      background: white;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-content {
+      max-width: 1000px;
+      margin: auto;
+      padding: 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    nav a {
+      display: inline-block;
+      padding: 12px 0;
+      color: var(--maroon);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #a23c4d;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 28px auto;
+      padding: 0 16px;
+      min-height: 45vh;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-right: 5px solid var(--maroon);
+      padding-right: 13px;
+      margin-bottom: 22px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      color: var(--maroon);
+      font-size: 23px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .news-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .news-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.035);
+    }
+
+    .card-top {
+      height: 6px;
+      background: var(--maroon);
+    }
+
+    .news-body {
+      padding: 20px;
+    }
+
+    .news-date {
+      display: inline-block;
+      color: var(--maroon);
+      background: #f7ecee;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .news-title {
+      margin: 0 0 12px;
+      font-size: 19px;
+      line-height: 1.7;
+      color: var(--maroon-dark);
+      overflow-wrap: anywhere;
+    }
+
+    .news-content {
+      margin: 0;
+      font-size: 15px;
+      color: #444;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .status {
+      background: white;
+      border-radius: 10px;
+      padding: 30px 18px;
+      text-align: center;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      grid-column: 1 / -1;
+    }
+
+    .retry-button {
+      margin-top: 12px;
+      border: none;
+      border-radius: 7px;
+      padding: 10px 20px;
+      background: var(--maroon);
+      color: white;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 22px 16px;
+      background: var(--maroon-dark);
+      color: white;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    footer p {
+      margin: 4px 0;
+    }
+
+    @media (max-width: 650px) {
+      .header-content {
+        gap: 12px;
+      }
+
+      .logo {
+        width: 62px;
+        height: 62px;
+      }
+
+      .club-name {
+        font-size: 18px;
+      }
+
+      .subtitle {
+        font-size: 12px;
+      }
+
+      .news-list {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .section-heading h2 {
+        font-size: 21px;
+      }
+
+      main {
+        margin-top: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">الموقع الرسمي لنادي شباب المدينة الدبة</div>
+
+  <header>
+    <div class="header-content">
+      <img
+        class="logo"
+        src="/images/logo.png"
+        alt="شعار نادي شباب المدينة الدبة"
+        onerror="this.style.display='none'"
+      >
+
+      <div>
+        <h1 class="club-name">نادي شباب المدينة الدبة</h1>
+        <p class="subtitle">أخبار النادي | نبض المدينة وإنجازات الشباب</p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-content">
+      <a href="/">الرئيسية</a>
+      <a href="/news">أخبار النادي</a>
+      <a href="/news-admin">إدارة الأخبار</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="section-heading">
+      <h2>آخر الأخبار</h2>
+      <p>تابع آخر أخبار النادي وأنشطته الرياضية والإعلامية</p>
+    </div>
+
+    <section id="news-list" class="news-list" aria-live="polite">
+      <div class="status">جارٍ تحميل الأخبار...</div>
+    </section>
+  </main>
+
+  <footer>
+    <p>نادي شباب المدينة الدبة</p>
+    <p>معًا نحو مستقبل رياضي وإعلامي أفضل</p>
+    <p>جميع الحقوق محفوظة للنادي</p>
+  </footer>
+
+  <script>
+    const newsList = document.getElementById("news-list");
+
+    function formatDate(value) {
+      if (!value) return "";
+
+      const date = new Date(value.replace(" ", "T") + (
+        value.endsWith("Z") ? "" : "Z"
+      ));
+
+      if (Number.isNaN(date.getTime())) return value;
+
+      return new Intl.DateTimeFormat("ar", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      }).format(date);
+    }
+
+    function createNewsCard(news) {
+      const card = document.createElement("article");
+      card.className = "news-card";
+
+      const top = document.createElement("div");
+      top.className = "card-top";
+
+      const body = document.createElement("div");
+      body.className = "news-body";
+
+      const date = document.createElement("div");
+      date.className = "news-date";
+      date.textContent = formatDate(news.created_at);
+
+      const title = document.createElement("h3");
+      title.className = "news-title";
+      title.textContent = news.title || "خبر من أخبار النادي";
+
+      const content = document.createElement("p");
+      content.className = "news-content";
+      content.textContent = news.content || "";
+
+      body.append(date, title, content);
+      card.append(top, body);
+
+      return card;
+    }
+
+    async function loadNews() {
+      newsList.replaceChildren();
+
+      const loading = document.createElement("div");
+      loading.className = "status";
+      loading.textContent = "جارٍ تحميل الأخبار...";
+      newsList.appendChild(loading);
+
+      try {
+        const response = await fetch("/api/news", {
+          headers: { "Accept": "application/json" }
+        });
+
+        if (!response.ok) {
+          throw new Error("تعذر تحميل الأخبار");
+        }
+
+        const data = await response.json();
+
+        newsList.replaceChildren();
+
+        const articles = Array.isArray(data)
+          ? data
+          : (Array.isArray(data.news) ? data.news : []);
+
+        if (articles.length === 0) {
+          const empty = document.createElement("div");
+          empty.className = "status";
+          empty.textContent = "لا توجد أخبار منشورة حاليًا. تابعونا لمعرفة آخر أخبار النادي.";
+          newsList.appendChild(empty);
+          return;
+        }
+
+        articles.forEach(news => {
+          newsList.appendChild(createNewsCard(news));
+        });
+      } catch (error) {
+        newsList.replaceChildren();
+
+        const message = document.createElement("div");
+        message.className = "status";
+        message.textContent = "تعذر تحميل الأخبار. تحقق من اتصال الإنترنت وحاول مرة أخرى.";
+
+        const button = document.createElement("button");
+        button.className = "retry-button";
+        button.textContent = "إعادة المحاولة";
+        button.addEventListener("click", loadNews);
+
+        message.appendChild(document.createElement("br"));
+        message.appendChild(button);
+        newsList.appendChild(message);
+      }
+    }
+
+    loadNews();
+  </script>
+</body>
+</html>
