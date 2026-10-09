@@ -125,6 +125,26 @@ export default {
       );
     }
 
+    // صفحة إدارة الأخبار.
+    if (
+      request.method === "GET" &&
+      (path === "/news-admin" || path === "/news-admin/")
+    ) {
+      return env.ASSETS.fetch(
+        new Request(new URL("/news-admin.html", url), request)
+      );
+    }
+
+    // صفحة الأخبار العامة.
+    if (
+      request.method === "GET" &&
+      (path === "/news" || path === "/news/")
+    ) {
+      return env.ASSETS.fetch(
+        new Request(new URL("/news.html", url), request)
+      );
+    }
+
     // تسجيل دخول المسؤول.
     if (
       path === "/api/admin/login" &&
@@ -219,7 +239,48 @@ export default {
       );
     }
 
-    // حماية واجهات الإدارة.
+    // الأخبار المنشورة: واجهة عامة للقراءة فقط.
+    if (
+      path === "/api/news" &&
+      request.method === "GET"
+    ) {
+      try {
+        if (!env.NEWS_DB) {
+          throw new Error("NEWS_DB binding is missing");
+        }
+
+        const result = await env.NEWS_DB.prepare(`
+          SELECT id, title, content, created_at, updated_at
+          FROM news
+          ORDER BY id DESC
+          LIMIT 100
+        `).all();
+
+        return json(
+          {
+            success: true,
+            news: result.results || []
+          },
+          200,
+          {
+            "Cache-Control": "no-store"
+          }
+        );
+      } catch {
+        return json(
+          {
+            success: false,
+            message: "تعذر تحميل الأخبار."
+          },
+          500,
+          {
+            "Cache-Control": "no-store"
+          }
+        );
+      }
+    }
+
+    // حماية جميع واجهات الإدارة.
     if (path.startsWith("/api/admin/")) {
       const authenticated = await isAdmin(
         request,
@@ -279,7 +340,258 @@ export default {
         }
       }
 
-      // قبول طلب أو رفضه.
+      // عرض جميع الأخبار في لوحة الإدارة.
+      if (
+        path === "/api/admin/news" &&
+        request.method === "GET"
+      ) {
+        try {
+          if (!env.NEWS_DB) {
+            throw new Error("NEWS_DB binding is missing");
+          }
+
+          const result = await env.NEWS_DB.prepare(`
+            SELECT id, title, content, created_at, updated_at
+            FROM news
+            ORDER BY id DESC
+          `).all();
+
+          return json(
+            {
+              success: true,
+              news: result.results || []
+            },
+            200,
+            { "Cache-Control": "no-store" }
+          );
+        } catch {
+          return json(
+            {
+              success: false,
+              message: "تعذر تحميل الأخبار للإدارة."
+            },
+            500,
+            { "Cache-Control": "no-store" }
+          );
+        }
+      }
+
+      // نشر خبر جديد.
+      if (
+        path === "/api/admin/news" &&
+        request.method === "POST"
+      ) {
+        try {
+          if (!env.NEWS_DB) {
+            throw new Error("NEWS_DB binding is missing");
+          }
+
+          const data = await request.json();
+
+          const title =
+            typeof data.title === "string"
+              ? data.title.trim()
+              : "";
+
+          const content =
+            typeof data.content === "string"
+              ? data.content.trim()
+              : "";
+
+          if (title.length < 2 || title.length > 200) {
+            return json(
+              {
+                success: false,
+                message: "يجب أن يكون عنوان الخبر بين حرفين و200 حرف."
+              },
+              400
+            );
+          }
+
+          if (content.length < 1 || content.length > 10000) {
+            return json(
+              {
+                success: false,
+                message: "نص الخبر مطلوب، والحد الأقصى 10000 حرف."
+              },
+              400
+            );
+          }
+
+          const result = await env.NEWS_DB.prepare(`
+            INSERT INTO news (title, content)
+            VALUES (?, ?)
+          `).bind(title, content).run();
+
+          return json(
+            {
+              success: true,
+              message: "تم نشر الخبر بنجاح.",
+              id: result.meta?.last_row_id ?? null
+            },
+            201,
+            { "Cache-Control": "no-store" }
+          );
+        } catch {
+          return json(
+            {
+              success: false,
+              message: "تعذر نشر الخبر."
+            },
+            500,
+            { "Cache-Control": "no-store" }
+          );
+        }
+      }
+
+      // التحقق من مسار تعديل خبر أو حذفه.
+      const newsMatch = path.match(
+        /^\/api\/admin\/news\/(\d+)$/
+      );
+
+      if (newsMatch) {
+        const id = Number(newsMatch[1]);
+
+        if (!Number.isSafeInteger(id) || id < 1) {
+          return json(
+            {
+              success: false,
+              message: "رقم الخبر غير صحيح."
+            },
+            400
+          );
+        }
+
+        // تعديل خبر موجود.
+        if (request.method === "PATCH") {
+          try {
+            if (!env.NEWS_DB) {
+              throw new Error("NEWS_DB binding is missing");
+            }
+
+            const data = await request.json();
+
+            const title =
+              typeof data.title === "string"
+                ? data.title.trim()
+                : "";
+
+            const content =
+              typeof data.content === "string"
+                ? data.content.trim()
+                : "";
+
+            if (title.length < 2 || title.length > 200) {
+              return json(
+                {
+                  success: false,
+                  message: "يجب أن يكون عنوان الخبر بين حرفين و200 حرف."
+                },
+                400
+              );
+            }
+
+            if (content.length < 1 || content.length > 10000) {
+              return json(
+                {
+                  success: false,
+                  message: "نص الخبر مطلوب، والحد الأقصى 10000 حرف."
+                },
+                400
+              );
+            }
+
+            const existing = await env.NEWS_DB.prepare(`
+              SELECT id FROM news WHERE id = ?
+            `).bind(id).first();
+
+            if (!existing) {
+              return json(
+                {
+                  success: false,
+                  message: "الخبر غير موجود."
+                },
+                404
+              );
+            }
+
+            await env.NEWS_DB.prepare(`
+              UPDATE news
+              SET title = ?, content = ?, updated_at = CURRENT_TIMESTAMP
+              WHERE id = ?
+            `).bind(title, content, id).run();
+
+            return json(
+              {
+                success: true,
+                message: "تم تعديل الخبر بنجاح."
+              },
+              200,
+              { "Cache-Control": "no-store" }
+            );
+          } catch {
+            return json(
+              {
+                success: false,
+                message: "تعذر تعديل الخبر."
+              },
+              500,
+              { "Cache-Control": "no-store" }
+            );
+          }
+        }
+
+        // حذف خبر.
+        if (request.method === "DELETE") {
+          try {
+            if (!env.NEWS_DB) {
+              throw new Error("NEWS_DB binding is missing");
+            }
+
+            const result = await env.NEWS_DB.prepare(`
+              DELETE FROM news WHERE id = ?
+            `).bind(id).run();
+
+            if (!result.meta || result.meta.changes === 0) {
+              return json(
+                {
+                  success: false,
+                  message: "الخبر غير موجود أو سبق حذفه."
+                },
+                404
+              );
+            }
+
+            return json(
+              {
+                success: true,
+                message: "تم حذف الخبر بنجاح."
+              },
+              200,
+              { "Cache-Control": "no-store" }
+            );
+          } catch {
+            return json(
+              {
+                success: false,
+                message: "تعذر حذف الخبر."
+              },
+              500,
+              { "Cache-Control": "no-store" }
+            );
+          }
+        }
+
+        return json(
+          {
+            success: false,
+            message: "طريقة الطلب غير مدعومة."
+          },
+          405
+        );
+      }
+
+      // قبول طلب عضوية أو رفضه.
       const requestMatch = path.match(
         /^\/api\/admin\/requests\/(\d+)$/
       );
