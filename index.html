@@ -508,7 +508,8 @@ header {
   margin-bottom: 7px;
 }
 
-.form-field input {
+.form-field input,
+.form-field select {
   width: 100%;
   min-height: 48px;
   padding: 12px;
@@ -520,7 +521,8 @@ header {
   outline: none;
 }
 
-.form-field input:focus {
+.form-field input:focus,
+.form-field select:focus {
   border-color: var(--red);
 }
 
@@ -910,7 +912,7 @@ footer {
       <div>
         <span class="section-label">كن جزءًا من الحكاية</span>
         <h2>العضوية الإلكترونية</h2>
-        <p>سجّل بياناتك وقدّم طلب العضوية في نادي شباب المدينة الدبة.</p>
+        <p>أدخل بياناتك لتقديم طلب عضوية في نادي شباب المدينة الدبة.</p>
       </div>
     </div>
 
@@ -918,7 +920,7 @@ footer {
 
       <div class="membership-intro">
         <h3>طلب عضوية نادي شباب المدينة</h3>
-        <p>يرجى مراجعة بيانات الحساب ورسوم العضوية قبل التسجيل.</p>
+        <p>أكمل البيانات التالية ثم أرسل الطلب إلكترونيًا.</p>
       </div>
 
       <div class="payment-details">
@@ -977,16 +979,70 @@ footer {
         </div>
 
         <div class="form-field">
-          <label for="payment_reference">رقم مرجع الدفع</label>
+          <label for="address">العنوان *</label>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            placeholder="المدينة والحي ومكان السكن"
+            minlength="2"
+            maxlength="200"
+            autocomplete="street-address"
+            required
+          >
+        </div>
+
+        <div class="form-field">
+          <label for="birth_date">تاريخ الميلاد *</label>
+          <input
+            type="date"
+            id="birth_date"
+            name="birth_date"
+            autocomplete="bday"
+            required
+          >
+        </div>
+
+        <div class="form-field">
+          <label for="occupation">المهنة *</label>
+          <input
+            type="text"
+            id="occupation"
+            name="occupation"
+            placeholder="مثال: طالب، موظف، عمل حر"
+            minlength="2"
+            maxlength="100"
+            required
+          >
+        </div>
+
+        <div class="form-field">
+          <label for="membership_type">نوع العضوية *</label>
+          <select
+            id="membership_type"
+            name="membership_type"
+            required
+          >
+            <option value="">اختر نوع العضوية</option>
+            <option value="عضو عامل">عضو عامل</option>
+            <option value="عضو منتسب">عضو منتسب</option>
+          </select>
+          <p class="form-note">
+            اختر نوع العضوية المناسب لك وفقًا للوائح النادي.
+          </p>
+        </div>
+
+        <div class="form-field">
+          <label for="payment_reference">رقم مرجع الدفع (اختياري)</label>
           <input
             type="text"
             id="payment_reference"
             name="payment_reference"
-            placeholder="أدخل رقم العملية إن توفر"
+            placeholder="أدخل رقم عملية التحويل إن توفر"
             maxlength="100"
           >
           <p class="form-note">
-            يمكنك ترك هذا الحقل فارغًا وإرسال إشعار الدفع عبر واتساب بعد تسجيل الطلب.
+            سيُدرج رقم المرجع في رسالة واتساب، لكنه لا يُحفظ في قاعدة البيانات الحالية.
           </p>
         </div>
 
@@ -996,7 +1052,12 @@ footer {
 
       </form>
 
-      <div id="membershipMessage" class="membership-message" role="status" aria-live="polite"></div>
+      <div
+        id="membershipMessage"
+        class="membership-message"
+        role="status"
+        aria-live="polite"
+      ></div>
 
       <div id="whatsappArea" hidden>
         <a
@@ -1010,8 +1071,8 @@ footer {
         </a>
 
         <p class="form-note" style="margin-top:10px">
-          بعد فتح واتساب، يمكنك إرفاق صورة إيصال الدفع وإرسالها إلى مسؤول مراجعة العضوية.
-          لن يُعتمد الطلب نهائيًا إلا بعد مراجعة الدفع من إدارة النادي.
+          بعد فتح واتساب، راجع الرسالة وأرسلها، وأرفق صورة إيصال التحويل بنفسك.
+          اعتماد العضوية النهائي يتطلب مراجعة الدفع من إدارة النادي.
         </p>
       </div>
 
@@ -1058,11 +1119,13 @@ footer {
   const whatsappArea = document.getElementById("whatsappArea");
   const whatsappButton = document.getElementById("whatsappButton");
 
-  /*
-    رقم واتساب مسؤول مراجعة إشعارات الدفع.
-    تمت إزالة الصفر الأول وإضافة مفتاح السودان الدولي.
-  */
+  // رقم واتساب مسؤول مراجعة إشعارات الدفع.
+  // تأكد من أن الرقم صحيح ومفعّل على واتساب.
   const whatsappNumber = "249100272661";
+
+  // منع اختيار تاريخ ميلاد مستقبلي.
+  const birthDateInput = document.getElementById("birth_date");
+  birthDateInput.max = new Date().toISOString().slice(0, 10);
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -1073,15 +1136,39 @@ footer {
 
     const fullName = document.getElementById("full_name").value.trim();
     const phone = document.getElementById("phone").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const birthDate = document.getElementById("birth_date").value;
+    const occupation = document.getElementById("occupation").value.trim();
+    const membershipType = document.getElementById("membership_type").value;
     const paymentReference = document.getElementById("payment_reference").value.trim();
 
-    if (fullName.length < 3) {
+    if (fullName.length < 3 || fullName.length > 150) {
       showMessage("يرجى إدخال الاسم الكامل بصورة صحيحة.", "error");
       return;
     }
 
-    if (phone.length < 6) {
+    if (phone.length < 6 || phone.length > 30) {
       showMessage("يرجى إدخال رقم هاتف صحيح.", "error");
+      return;
+    }
+
+    if (address.length < 2 || address.length > 200) {
+      showMessage("يرجى إدخال العنوان بصورة صحيحة.", "error");
+      return;
+    }
+
+    if (!birthDate || birthDate > birthDateInput.max) {
+      showMessage("يرجى إدخال تاريخ ميلاد صحيح.", "error");
+      return;
+    }
+
+    if (occupation.length < 2 || occupation.length > 100) {
+      showMessage("يرجى إدخال المهنة.", "error");
+      return;
+    }
+
+    if (!["عضو عامل", "عضو منتسب"].includes(membershipType)) {
+      showMessage("يرجى اختيار نوع العضوية.", "error");
       return;
     }
 
@@ -1097,7 +1184,10 @@ footer {
         body: JSON.stringify({
           full_name: fullName,
           phone: phone,
-          payment_reference: paymentReference
+          address: address,
+          birth_date: birthDate,
+          occupation: occupation,
+          membership_type: membershipType
         })
       });
 
@@ -1106,7 +1196,7 @@ footer {
       try {
         result = await response.json();
       } catch {
-        throw new Error("تعذر قراءة استجابة الخادم.");
+        throw new Error("تعذر قراءة استجابة الخادم. يرجى المحاولة لاحقًا.");
       }
 
       if (!response.ok || !result.success) {
@@ -1115,30 +1205,38 @@ footer {
         );
       }
 
-      showMessage(
-        "تم تسجيل طلبك بنجاح. الخطوة التالية هي إرسال إشعار الدفع إلى مسؤول العضوية عبر واتساب.",
-        "success"
-      );
-
       const whatsappText = [
         "السلام عليكم، أرسل إشعار دفع رسوم عضوية نادي شباب المدينة الدبة.",
         "",
         "الاسم: " + fullName,
         "رقم الهاتف: " + phone,
+        "العنوان: " + address,
+        "تاريخ الميلاد: " + birthDate,
+        "المهنة: " + occupation,
+        "نوع العضوية: " + membershipType,
+        "",
         "رسوم العضوية: 20,000 جنيه سوداني",
         "البنك: بنك الخرطوم",
+        "اسم الحساب: نادي شباب المدينة الدبة",
         "رقم الحساب: 3399226",
         "رقم مرجع الدفع: " + (paymentReference || "سأرفق الإيصال في واتساب"),
         "",
-        "يرجى مراجعة الطلب وإشعار الدفع."
+        "يرجى مراجعة طلب العضوية وإشعار الدفع."
       ].join("\n");
 
       whatsappButton.href =
         "https://wa.me/" + whatsappNumber +
         "?text=" + encodeURIComponent(whatsappText);
 
+      showMessage(
+        "تم تسجيل طلبك بنجاح. اضغط على زر واتساب لإرسال إشعار الدفع وإرفاق الإيصال.",
+        "success"
+      );
+
       whatsappArea.hidden = false;
 
+      // الاحتفاظ ببيانات الطلب في قاعدة البيانات؛
+      // إعادة ضبط الاستمارة لا تحذف الطلب المسجل.
       form.reset();
 
     } catch (error) {
