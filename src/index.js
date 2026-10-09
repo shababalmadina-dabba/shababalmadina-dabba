@@ -9,16 +9,11 @@ for (const byte of bytes) {
 binary += String.fromCharCode(byte);
 }
 
-return btoa(binary)
-.replace(/+/g, "-")
-.replace(///g, "_")
-.replace(/=+$/g, "");
+return btoa(binary).replace(/+/g, "-").replace(///g, "_").replace(/=+$/g, "");
 }
 
 function decodeBase64url(value) {
-const normalized = value
-.replace(/-/g, "+")
-.replace(/_/g, "/");
+const normalized = value.replace(/-/g, "+").replace(/_/g, "/");
 
 const binary = atob(
 normalized + "=".repeat((4 - normalized.length % 4) % 4)
@@ -36,7 +31,7 @@ const key = await crypto.subtle.importKey(
 new TextEncoder().encode(secret),
 { name: "HMAC", hash: "SHA-256" },
 false,
-["sign", "verify"]
+["sign"]
 );
 
 const signature = await crypto.subtle.sign(
@@ -107,7 +102,7 @@ async fetch(request, env) {
 const url = new URL(request.url);
 const path = url.pathname;
 
-// اختبار مؤقت: هل كلمة مرور الإدارة متاحة؟
+// فحص مؤقت لمعرفة ما إذا كان سر الإدارة متاحًا.
 // لا يعرض هذا المسار كلمة المرور نفسها.
 if (
   path === "/api/admin/check-config" &&
@@ -429,8 +424,7 @@ if (
       return json(
         {
           success: false,
-          message:
-            "يرجى إدخال الاسم الكامل بصورة صحيحة."
+          message: "يرجى إدخال الاسم الكامل بصورة صحيحة."
         },
         400
       );
@@ -472,8 +466,7 @@ if (
       return json(
         {
           success: false,
-          message:
-            "يرجى إدخال تاريخ الميلاد بصورة صحيحة."
+          message: "يرجى إدخال تاريخ الميلاد بصورة صحيحة."
         },
         400
       );
@@ -537,8 +530,7 @@ if (
     return json(
       {
         success: false,
-        message:
-          "تعذر إرسال الطلب. يرجى المحاولة لاحقًا."
+        message: "تعذر إرسال الطلب. يرجى المحاولة لاحقًا."
       },
       500
     );
