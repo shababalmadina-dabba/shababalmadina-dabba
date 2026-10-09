@@ -12,6 +12,11 @@
       "binding": "DB",
       "database_name": "shababalmadina-members",
       "database_id": "d60e188c-ebaf-4953-968c-91d8bebb1ebc"
+    },
+    {
+      "binding": "NEWS_DB",
+      "database_name": "shababalmadina-news",
+      "database_id": "d2fe007c-eb03-4e40-a56d-adfc337ce195"
     }
   ]
 }
