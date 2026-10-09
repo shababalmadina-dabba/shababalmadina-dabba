@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#59070b">
+  <title>أعضاء نادي شباب المدينة الدبة</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f5f5f5;
+      color: #242424;
+    }
+
+    header {
+      background: linear-gradient(135deg, #59070b, #8d171d);
+      color: white;
+      padding: 35px 18px;
+      text-align: center;
+    }
+
+    .logo-text {
+      font-size: 13px;
+      letter-spacing: 1px;
+      opacity: 0.9;
+      margin-bottom: 12px;
+    }
+
+    header h1 {
+      font-size: 25px;
+      margin: 0 0 12px;
+    }
+
+    header p {
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 0;
+      color: #f5dfe0;
+    }
+
+    main {
+      width: 100%;
+      max-width: 850px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+
+    .summary {
+      background: white;
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 12px #00000008;
+    }
+
+    .summary span {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .count {
+      color: #59070b;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .members-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .member-card {
+      background: white;
+      border-radius: 12px;
+      padding: 19px;
+      border-right: 4px solid #59070b;
+      box-shadow: 0 3px 12px #00000008;
+    }
+
+    .member-label {
+      color: #777;
+      font-size: 12px;
+      margin-bottom: 7px;
+    }
+
+    .member-name {
+      font-size: 17px;
+      font-weight: bold;
+      line-height: 1.8;
+      overflow-wrap: anywhere;
+      margin-bottom: 15px;
+    }
+
+    .member-number {
+      display: inline-block;
+      background: #f8eeee;
+      color: #59070b;
+      border-radius: 7px;
+      padding: 8px 11px;
+      font-size: 13px;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    .message {
+      background: white;
+      padding: 25px 15px;
+      text-align: center;
+      border-radius: 12px;
+      color: #666;
+      line-height: 1.9;
+    }
+
+    .error {
+      color: #a3131b;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      background: #59070b;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .back-link:hover {
+      background: #7b1117;
+    }
+
+    footer {
+      text-align: center;
+      color: #888;
+      font-size: 12px;
+      padding: 25px 12px;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo-text">SHABAB ALMADINA FC</div>
+    <h1>أعضاء نادي شباب المدينة الدبة</h1>
+    <p>القائمة الرسمية للأعضاء الذين اكتملت الموافقة على عضويتهم</p>
+  </header>
+
+  <main>
+    <section class="summary">
+      <span>إجمالي الأعضاء المعتمدين</span>
+      <div class="count" id="membersCount">—</div>
+    </section>
+
+    <section class="members-list" id="membersList">
+      <div class="message">جارٍ تحميل قائمة الأعضاء...</div>
+    </section>
+
+    <div style="text-align:center;">
+      <a href="/" class="back-link">العودة إلى الموقع الرئيسي</a>
+    </div>
+  </main>
+
+  <footer>
+    نادي شباب المدينة الدبة<br>
+    جميع الحقوق محفوظة
+  </footer>
+
+  <script>
+    async function loadMembers() {
+      const list = document.getElementById("membersList");
+      const count = document.getElementById("membersCount");
+
+      try {
+        const response = await fetch("/api/members", {
+          cache: "no-store"
+        });
+
+        if (!response.ok) {
+          throw new Error("تعذر تحميل البيانات");
+        }
+
+        const data = await response.json();
+
+        if (!data.success || !Array.isArray(data.members)) {
+          throw new Error("استجابة غير صحيحة");
+        }
+
+        const members = data.members;
+
+        count.textContent = members.length;
+        list.replaceChildren();
+
+        if (members.length === 0) {
+          const message = document.createElement("div");
+          message.className = "message";
+          message.textContent =
+            "لا توجد عضويات معتمدة للعرض حاليًا.";
+          list.appendChild(message);
+          return;
+        }
+
+        members.forEach(function(member) {
+          const card = document.createElement("article");
+          card.className = "member-card";
+
+          const nameLabel = document.createElement("div");
+          nameLabel.className = "member-label";
+          nameLabel.textContent = "اسم العضو";
+
+          const name = document.createElement("div");
+          name.className = "member-name";
+          name.textContent = member.full_name || "غير متوفر";
+
+          const numberLabel = document.createElement("div");
+          numberLabel.className = "member-label";
+          numberLabel.textContent = "رقم العضوية";
+
+          const number = document.createElement("span");
+          number.className = "member-number";
+          number.dir = "ltr";
+          number.textContent = member.membership_number || "غير متوفر";
+
+          card.appendChild(nameLabel);
+          card.appendChild(name);
+          card.appendChild(numberLabel);
+          card.appendChild(number);
+
+          list.appendChild(card);
+        });
+
+      } catch (error) {
+        count.textContent = "—";
+        list.replaceChildren();
+
+        const message = document.createElement("div");
+        message.className = "message error";
+        message.textContent =
+          "تعذر تحميل قائمة الأعضاء. يرجى المحاولة مرة أخرى لاحقًا.";
+
+        list.appendChild(message);
+      }
+    }
+
+    loadMembers();
+  </script>
+</body>
+</html>
