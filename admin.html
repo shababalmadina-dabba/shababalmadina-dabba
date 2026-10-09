@@ -7,19 +7,18 @@
 
 <title>إدارة العضوية | نادي شباب المدينة الدبة</title>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
+<link rel="stylesheet"
+href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
 
 <style>
 :root {
   --red: #5a0508;
   --deep: #3a0203;
-  --white: #fff;
   --bg: #f5f5f7;
   --ink: #242424;
   --muted: #777;
   --border: #e8e8e8;
   --green: #16834a;
-  --orange: #a96300;
   --danger: #bd2635;
 }
 
@@ -34,7 +33,7 @@ body {
   color: var(--ink);
 }
 
-button, input {
+button, input, select {
   font-family: inherit;
 }
 
@@ -42,10 +41,15 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
 .topbar {
   background: linear-gradient(135deg, var(--deep), var(--red));
   color: white;
-  padding: 24px 18px;
+  padding: 22px 16px;
 }
 
 .topbar-inner {
@@ -54,49 +58,55 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
+  gap: 12px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 12px;
 }
 
 .brand-mark {
-  width: 52px;
-  height: 52px;
-  border: 2px solid rgba(255,255,255,.8);
+  width: 50px;
+  height: 50px;
+  border: 2px solid white;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 22px;
+  font-size: 23px;
   font-weight: 900;
 }
 
 .brand h1 {
-  font-size: 19px;
+  font-size: 18px;
   margin: 0;
 }
 
 .brand p {
-  margin: 4px 0 0;
   font-size: 12px;
+  margin: 4px 0 0;
   opacity: .85;
+}
+
+.home-link {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
 }
 
 .container {
   max-width: 1200px;
   margin: 28px auto;
-  padding: 0 16px;
+  padding: 0 15px;
 }
 
 .card {
   background: white;
-  border-radius: 16px;
-  padding: 22px;
-  box-shadow: 0 5px 24px rgba(0,0,0,.045);
   border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 22px;
+  box-shadow: 0 5px 24px rgba(0,0,0,.04);
 }
 
 .hidden {
@@ -108,9 +118,10 @@ button {
   margin: 45px auto;
 }
 
-.login-wrap h2 {
-  margin-top: 0;
+.login-wrap h2,
+.dashboard-head h2 {
   color: var(--red);
+  margin-top: 0;
 }
 
 .description {
@@ -125,17 +136,17 @@ label {
   margin: 18px 0 7px;
 }
 
-input {
+input, select {
   width: 100%;
-  padding: 13px;
+  padding: 12px;
   border: 1px solid #ddd;
   border-radius: 9px;
-  outline: none;
-  font-size: 15px;
+  font-size: 14px;
   background: white;
+  outline: none;
 }
 
-input:focus {
+input:focus, select:focus {
   border-color: var(--red);
   box-shadow: 0 0 0 3px rgba(90,5,8,.08);
 }
@@ -143,7 +154,7 @@ input:focus {
 .btn {
   border: 0;
   border-radius: 9px;
-  padding: 11px 16px;
+  padding: 11px 15px;
   font-size: 13px;
   font-weight: 800;
 }
@@ -172,23 +183,19 @@ input:focus {
   color: #a71928;
 }
 
-.btn:disabled {
-  opacity: .5;
-  cursor: not-allowed;
-}
-
 .full-width {
   width: 100%;
   margin-top: 20px;
 }
 
 .message {
+  display: none;
   margin-top: 15px;
   padding: 12px;
   border-radius: 9px;
   font-size: 13px;
-  line-height: 1.8;
-  display: none;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
 }
 
 .message.error {
@@ -216,22 +223,27 @@ input:focus {
 
 .dashboard-head {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
 .dashboard-head h2 {
-  margin: 0;
-  color: var(--red);
+  margin-bottom: 5px;
 }
 
 .dashboard-head p {
   color: var(--muted);
-  margin: 5px 0 0;
   font-size: 13px;
+  margin: 0;
+}
+
+.head-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .stats {
@@ -256,45 +268,43 @@ input:focus {
 
 .stat strong {
   display: block;
-  margin-top: 8px;
   font-size: 27px;
   color: var(--red);
+  margin-top: 8px;
 }
 
 .toolbar {
   display: flex;
   align-items: center;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 16px;
 }
 
 .toolbar input {
-  max-width: 320px;
+  max-width: 350px;
 }
 
 .toolbar select {
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 9px;
-  font-family: inherit;
-  background: white;
+  width: auto;
+  min-width: 150px;
 }
 
 .table-wrap {
+  width: 100%;
   overflow-x: auto;
 }
 
 table {
-  border-collapse: collapse;
   width: 100%;
   min-width: 900px;
+  border-collapse: collapse;
 }
 
 th, td {
-  text-align: right;
-  padding: 14px 12px;
+  padding: 13px 11px;
   border-bottom: 1px solid var(--border);
+  text-align: right;
   vertical-align: top;
   font-size: 13px;
 }
@@ -337,7 +347,7 @@ td {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  min-width: 145px;
+  min-width: 135px;
 }
 
 .actions .btn {
@@ -347,14 +357,14 @@ td {
 .empty {
   text-align: center;
   color: var(--muted);
-  padding: 35px 10px;
+  padding: 30px 10px;
 }
 
 .footer {
   text-align: center;
   color: var(--muted);
   font-size: 12px;
-  padding: 28px 12px;
+  padding: 25px 12px;
 }
 
 @media (max-width: 650px) {
@@ -363,7 +373,11 @@ td {
   }
 
   .brand h1 {
-    font-size: 16px;
+    font-size: 15px;
+  }
+
+  .home-link {
+    font-size: 12px;
   }
 
   .stats {
@@ -371,14 +385,20 @@ td {
   }
 
   .card {
-    padding: 17px;
+    padding: 16px;
   }
 
-  .dashboard-head .btn {
+  .head-actions {
     width: 100%;
   }
 
-  .toolbar input {
+  .head-actions .btn {
+    flex: 1;
+  }
+
+  .toolbar input,
+  .toolbar select {
+    width: 100%;
     max-width: none;
   }
 }
@@ -396,9 +416,8 @@ td {
         <p>نظام إدارة العضوية الإلكتروني</p>
       </div>
     </div>
-    <a href="/" style="color:white;text-decoration:none;font-size:13px">
-      الموقع الرئيسي
-    </a>
+
+    <a class="home-link" href="/">الموقع الرئيسي</a>
   </div>
 </header>
 
@@ -406,13 +425,15 @@ td {
 
   <section id="loginSection" class="login-wrap card">
     <h2>دخول مسؤول العضوية</h2>
+
     <p class="description">
       هذه الصفحة مخصصة لإدارة طلبات العضوية في النادي.
-      يرجى تسجيل الدخول باستخدام كلمة مرور الإدارة.
+      أدخل كلمة مرور الإدارة للمتابعة.
     </p>
 
     <form id="loginForm">
       <label for="password">كلمة مرور الإدارة</label>
+
       <input
         id="password"
         type="password"
@@ -422,12 +443,21 @@ td {
         placeholder="أدخل كلمة المرور"
       >
 
-      <button class="btn btn-primary full-width" type="submit">
+      <button
+        id="loginButton"
+        class="btn btn-primary full-width"
+        type="submit"
+      >
         تسجيل الدخول
       </button>
     </form>
 
-    <div id="loginMessage" class="message" role="status"></div>
+    <div
+      id="loginMessage"
+      class="message"
+      role="status"
+      aria-live="polite"
+    ></div>
   </section>
 
   <section id="dashboardSection" class="hidden">
@@ -438,10 +468,11 @@ td {
         <p>مراجعة الطلبات ومتابعة حالة كل طلب.</p>
       </div>
 
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <div class="head-actions">
         <button id="refreshButton" class="btn btn-light" type="button">
           تحديث الطلبات
         </button>
+
         <button id="logoutButton" class="btn btn-primary" type="button">
           تسجيل الخروج
         </button>
@@ -451,7 +482,7 @@ td {
     <div class="notice">
       <strong>تنبيه:</strong>
       راجع إشعار الدفع وإيصال التحويل قبل قبول أي طلب.
-      تغيير حالة الطلب إلى «مقبول» لا يتحقق من وصول الأموال إلى حساب النادي.
+      الموقع لا يتحقق من وصول الأموال تلقائيًا.
     </div>
 
     <div class="stats">
@@ -476,11 +507,11 @@ td {
         <input
           id="searchInput"
           type="search"
-          placeholder="ابحث بالاسم أو رقم الهاتف..."
-          aria-label="البحث في طلبات العضوية"
+          placeholder="ابحث بالاسم أو الهاتف أو رقم العضوية..."
+          aria-label="البحث في الطلبات"
         >
 
-        <select id="statusFilter" aria-label="تصفية حسب حالة الطلب">
+        <select id="statusFilter" aria-label="تصفية الطلبات">
           <option value="all">جميع الحالات</option>
           <option value="pending">قيد المراجعة</option>
           <option value="approved">مقبول</option>
@@ -488,7 +519,12 @@ td {
         </select>
       </div>
 
-      <div id="dashboardMessage" class="message" role="status"></div>
+      <div
+        id="dashboardMessage"
+        class="message"
+        role="status"
+        aria-live="polite"
+      ></div>
 
       <div class="table-wrap">
         <table>
@@ -507,7 +543,7 @@ td {
 
           <tbody id="requestsBody">
             <tr>
-              <td colspan="8" class="empty">جارٍ تحميل الطلبات...</td>
+              <td colspan="8" class="empty">لم تُحمّل الطلبات بعد.</td>
             </tr>
           </tbody>
         </table>
@@ -515,7 +551,6 @@ td {
     </section>
 
   </section>
-
 </main>
 
 <footer class="footer">
@@ -525,15 +560,18 @@ td {
 <script>
 "use strict";
 
-const loginSection = document.getElementById("loginSection");
-const dashboardSection = document.getElementById("dashboardSection");
-const loginForm = document.getElementById("loginForm");
-const passwordInput = document.getElementById("password");
-const loginMessage = document.getElementById("loginMessage");
-const dashboardMessage = document.getElementById("dashboardMessage");
-const requestsBody = document.getElementById("requestsBody");
-const searchInput = document.getElementById("searchInput");
-const statusFilter = document.getElementById("statusFilter");
+const $ = id => document.getElementById(id);
+
+const loginSection = $("loginSection");
+const dashboardSection = $("dashboardSection");
+const loginForm = $("loginForm");
+const passwordInput = $("password");
+const loginButton = $("loginButton");
+const loginMessage = $("loginMessage");
+const dashboardMessage = $("dashboardMessage");
+const requestsBody = $("requestsBody");
+const searchInput = $("searchInput");
+const statusFilter = $("statusFilter");
 
 let requests = [];
 let busy = false;
@@ -548,6 +586,16 @@ function clearMessage(element) {
   element.className = "message";
 }
 
+function showLogin() {
+  loginSection.classList.remove("hidden");
+  dashboardSection.classList.add("hidden");
+}
+
+function showDashboard() {
+  loginSection.classList.add("hidden");
+  dashboardSection.classList.remove("hidden");
+}
+
 function escapeHTML(value) {
   return String(value ?? "").replace(/[&<>"']/g, char => ({
     "&": "&amp;",
@@ -559,70 +607,88 @@ function escapeHTML(value) {
 }
 
 async function api(path, options = {}) {
-  const response = await fetch(path, {
-    ...options,
-    credentials: "same-origin",
-    cache: "no-store",
-    headers: {
-      ...(options.headers || {}),
-      ...(options.body ? { "Content-Type": "application/json" } : {})
-    }
-  });
+  let response;
+
+  try {
+    response = await fetch(path, {
+      ...options,
+      credentials: "same-origin",
+      cache: "no-store",
+      headers: {
+        ...(options.headers || {}),
+        ...(options.body
+          ? { "Content-Type": "application/json" }
+          : {})
+      }
+    });
+  } catch {
+    throw new Error(
+      "تعذر الاتصال بالخادم. تحقق من الإنترنت ثم حاول مجددًا."
+    );
+  }
 
   let data;
 
   try {
     data = await response.json();
   } catch {
-    throw new Error("تعذر قراءة استجابة الخادم.");
+    throw new Error(
+      "وصل رد غير متوقع من الخادم. تحقق من نشر آخر نسخة من الموقع."
+    );
   }
 
   if (!response.ok) {
-    if (response.status === 401) {
-      showLogin();
-    }
-
-    throw new Error(data.message || "حدث خطأ أثناء تنفيذ الطلب.");
+    throw new Error(
+      data.message || ("حدث خطأ من الخادم. رمز الخطأ: " + response.status)
+    );
   }
 
   return data;
 }
 
-function showLogin() {
-  loginSection.classList.remove("hidden");
-  dashboardSection.classList.add("hidden");
-  passwordInput.value = "";
-}
-
-function showDashboard() {
-  loginSection.classList.add("hidden");
-  dashboardSection.classList.remove("hidden");
-}
-
 loginForm.addEventListener("submit", async event => {
   event.preventDefault();
+
   clearMessage(loginMessage);
 
-  const button = loginForm.querySelector("button");
-  button.disabled = true;
-  button.textContent = "جارٍ تسجيل الدخول...";
+  const password = passwordInput.value;
+
+  if (!password) {
+    showMessage(loginMessage, "يرجى إدخال كلمة المرور.");
+    return;
+  }
+
+  loginButton.disabled = true;
+  loginButton.textContent = "جارٍ التحقق من كلمة المرور...";
 
   try {
-    await api("/api/admin/login", {
+    const result = await api("/api/admin/login", {
       method: "POST",
-      body: JSON.stringify({
-        password: passwordInput.value
-      })
+      body: JSON.stringify({ password })
     });
+
+    if (!result || result.success !== true) {
+      throw new Error(
+        result?.message || "لم يؤكد الخادم نجاح تسجيل الدخول."
+      );
+    }
 
     passwordInput.value = "";
     showDashboard();
+
     await loadRequests();
+
   } catch (error) {
-    showMessage(loginMessage, error.message);
+    showLogin();
+
+    showMessage(
+      loginMessage,
+      error.message || "تعذر تسجيل الدخول. حاول مجددًا."
+    );
+
   } finally {
-    button.disabled = false;
-    button.textContent = "تسجيل الدخول";
+    loginButton.disabled = false;
+    loginButton.textContent = "تسجيل الدخول";
   }
 });
 
@@ -642,6 +708,7 @@ async function loadRequests() {
 
     updateStats();
     renderRequests();
+
   } catch (error) {
     requestsBody.innerHTML = `
       <tr>
@@ -654,12 +721,12 @@ async function loadRequests() {
 }
 
 function updateStats() {
-  document.getElementById("totalCount").textContent = requests.length;
+  $("totalCount").textContent = requests.length;
 
-  document.getElementById("pendingCount").textContent =
+  $("pendingCount").textContent =
     requests.filter(item => item.status === "pending").length;
 
-  document.getElementById("approvedCount").textContent =
+  $("approvedCount").textContent =
     requests.filter(item => item.status === "approved").length;
 }
 
@@ -678,7 +745,7 @@ function statusLabel(status) {
 function formatDate(value) {
   if (!value) return "—";
 
-  const date = new Date(value.replace(" ", "T") + "Z");
+  const date = new Date(String(value).replace(" ", "T") + "Z");
 
   if (Number.isNaN(date.getTime())) {
     return escapeHTML(value);
@@ -688,4 +755,165 @@ function formatDate(value) {
     new Intl.DateTimeFormat("ar", {
       dateStyle: "medium",
       timeStyle: "short",
-     
+      timeZone: "Africa/Khartoum"
+    }).format(date)
+  );
+}
+
+function renderRequests() {
+  const query = searchInput.value.trim().toLowerCase();
+  const filter = statusFilter.value;
+
+  const filtered = requests.filter(item => {
+    const matchesStatus =
+      filter === "all" || item.status === filter;
+
+    const searchText = [
+      item.full_name,
+      item.phone,
+      item.membership_number,
+      item.id
+    ].join(" ").toLowerCase();
+
+    return matchesStatus && searchText.includes(query);
+  });
+
+  if (filtered.length === 0) {
+    requestsBody.innerHTML = `
+      <tr>
+        <td colspan="8" class="empty">لا توجد طلبات مطابقة.</td>
+      </tr>
+    `;
+    return;
+  }
+
+  requestsBody.innerHTML = filtered.map(item => {
+    const actions = item.status === "pending"
+      ? `
+        <button
+          class="btn btn-approve"
+          data-action="approve"
+          data-id="${Number(item.id)}"
+          type="button"
+        >قبول</button>
+
+        <button
+          class="btn btn-reject"
+          data-action="reject"
+          data-id="${Number(item.id)}"
+          type="button"
+        >رفض</button>
+      `
+      : "—";
+
+    return `
+      <tr>
+        <td>#${Number(item.id)}</td>
+
+        <td>
+          <strong>${escapeHTML(item.full_name)}</strong><br>
+          ${escapeHTML(item.phone)}<br>
+          <small>الميلاد: ${escapeHTML(item.birth_date || "—")}</small>
+        </td>
+
+        <td>
+          ${escapeHTML(item.address || "—")}<br>
+          <small>المهنة: ${escapeHTML(item.occupation || "—")}</small>
+        </td>
+
+        <td>${escapeHTML(item.membership_type || "—")}</td>
+
+        <td>${formatDate(item.created_at)}</td>
+
+        <td>${statusLabel(item.status)}</td>
+
+        <td>${escapeHTML(item.membership_number || "لم يُخصص")}</td>
+
+        <td><div class="actions">${actions}</div></td>
+      </tr>
+    `;
+  }).join("");
+}
+
+requestsBody.addEventListener("click", async event => {
+  const button = event.target.closest("button[data-action]");
+
+  if (!button || busy) return;
+
+  const id = Number(button.dataset.id);
+  const action = button.dataset.action;
+
+  if (!Number.isSafeInteger(id) || id < 1) return;
+
+  const item = requests.find(request => Number(request.id) === id);
+
+  if (!item || item.status !== "pending") return;
+
+  if (action === "approve") {
+    if (!confirm(
+      "هل تأكدت من وصول رسوم العضوية إلى حساب النادي؟\n\n" +
+      "الموقع لا يتحقق من الدفع تلقائيًا.\n\n" +
+      "هل تريد قبول طلب " + item.full_name + "؟"
+    )) {
+      return;
+    }
+  }
+
+  if (action === "reject") {
+    if (!confirm(
+      "هل تريد رفض طلب العضوية الخاص بـ " + item.full_name + "؟"
+    )) {
+      return;
+    }
+  }
+
+  busy = true;
+  button.disabled = true;
+
+  try {
+    const result = await api(
+      "/api/admin/requests/" + id,
+      {
+        method: "PATCH",
+        body: JSON.stringify({
+          status: action === "approve" ? "approved" : "rejected"
+        })
+      }
+    );
+
+    showMessage(dashboardMessage, result.message, "success");
+    await loadRequests();
+
+  } catch (error) {
+    showMessage(dashboardMessage, error.message);
+
+  } finally {
+    busy = false;
+  }
+});
+
+searchInput.addEventListener("input", renderRequests);
+statusFilter.addEventListener("change", renderRequests);
+
+$("refreshButton").addEventListener("click", loadRequests);
+
+$("logoutButton").addEventListener("click", async () => {
+  try {
+    await api("/api/admin/logout", { method: "POST" });
+  } catch {
+    // مسح الواجهة محليًا حتى لو تعذر الاتصال بالخادم.
+  }
+
+  requests = [];
+  requestsBody.innerHTML = "";
+  showLogin();
+  clearMessage(loginMessage);
+  clearMessage(dashboardMessage);
+  passwordInput.value = "";
+});
+
+showLogin();
+</script>
+
+</body>
+</html>
