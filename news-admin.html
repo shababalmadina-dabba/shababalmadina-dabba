@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#701c2b">
+  <title>إدارة الأخبار | نادي شباب المدينة الدبة</title>
+
+  <style>
+    :root {
+      --maroon: #701c2b;
+      --dark: #4b101c;
+      --gold: #d5b477;
+      --bg: #f5f5f5;
+      --border: #e8e8e8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: #252525;
+      line-height: 1.8;
+    }
+
+    header {
+      background: var(--maroon);
+      color: white;
+      padding: 20px 16px;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 13px;
+      color: #f1dfe2;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 22px auto;
+      padding: 0 14px;
+    }
+
+    .panel {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 12px #00000008;
+    }
+
+    h2 {
+      color: var(--maroon);
+      font-size: 19px;
+      margin: 0 0 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 12px 0 5px;
+      font-size: 14px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d8d8d8;
+      border-radius: 8px;
+      font: inherit;
+      font-size: 15px;
+      background: white;
+    }
+
+    textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 10px 15px;
+      font: inherit;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: .6;
+      cursor: wait;
+    }
+
+    .primary {
+      background: var(--maroon);
+      color: white;
+      width: 100%;
+      margin-top: 14px;
+    }
+
+    .secondary {
+      background: #eee;
+      color: #333;
+    }
+
+    .danger {
+      background: #a52232;
+      color: white;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .message {
+      padding: 10px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    .error {
+      background: #fff0f0;
+      color: #a52232;
+    }
+
+    .success {
+      background: #eaf8ef;
+      color: #176b36;
+    }
+
+    .news-item {
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 14px;
+      margin-top: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .news-item h3 {
+      margin: 0 0 8px;
+      color: var(--dark);
+      font-size: 17px;
+    }
+
+    .news-item p {
+      white-space: pre-wrap;
+      margin: 0 0 12px;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .actions button {
+      flex: 1;
+      min-width: 90px;
+    }
+
+    .muted {
+      color: #777;
+      font-size: 13px;
+    }
+
+    .top-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .top-links a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .panel {
+        padding: 14px;
+      }
+
+      header h1 {
+        font-size: 19px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>إدارة أخبار نادي شباب المدينة الدبة</h1>
+    <p>لوحة التحكم الإعلامية للنادي</p>
+
+    <div class="top-links">
+      <a href="/news">عرض الأخبار المنشورة</a>
+      <a href="/">الصفحة الرئيسية</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="login-panel" class="panel">
+      <h2>تسجيل دخول الإدارة</h2>
+      <p class="muted">
+        أدخل كلمة مرور الإدارة المعتمدة للموقع.
+      </p>
+
+      <form id="login-form">
+        <label for="password">كلمة المرور</label>
+        <input
+          id="password"
+          type="password"
+          autocomplete="current-password"
+          required
+          maxlength="1024"
+        >
+
+        <button class="primary" type="submit">
+          تسجيل الدخول
+        </button>
+      </form>
+
+      <div id="login-message" aria-live="polite"></div>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <div class="panel">
+        <h2 id="form-heading">نشر خبر جديد</h2>
+
+        <form id="news-form">
+          <label for="title">عنوان الخبر</label>
+          <input
+            id="title"
+            type="text"
+            minlength="2"
+            maxlength="200"
+            required
+          >
+
+          <label for="content">محتوى الخبر</label>
+          <textarea
+            id="content"
+            maxlength="10000"
+            required
+          ></textarea>
+
+          <button id="save-button" class="primary" type="submit">
+            نشر الخبر
+          </button>
+
+          <button
+            id="cancel-edit"
+            class="secondary hidden"
+            type="button"
+            style="width:100%;margin-top:8px"
+          >
+            إلغاء التعديل
+          </button>
+        </form>
+
+        <div id="form-message" aria-live="polite"></div>
+      </div>
+
+      <div class="panel">
+        <h2>الأخبار المنشورة</h2>
+
+        <button id="refresh-button" class="secondary" type="button">
+          تحديث القائمة
+        </button>
+
+        <button
+          id="logout-button"
+          class="secondary"
+          type="button"
+          style="margin-right:6px"
+        >
+          تسجيل الخروج
+        </button>
+
+        <div id="news-list" aria-live="polite">
+          <p class="muted">جارٍ تحميل الأخبار...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const loginPanel = document.getElementById("login-panel");
+    const dashboard = document.getElementById("dashboard");
+    const loginForm = document.getElementById("login-form");
+    const loginMessage = document.getElementById("login-message");
+    const newsForm = document.getElementById("news-form");
+    const formMessage = document.getElementById("form-message");
+    const newsList = document.getElementById("news-list");
+    const titleInput = document.getElementById("title");
+    const contentInput = document.getElementById("content");
+    const saveButton = document.getElementById("save-button");
+    const formHeading = document.getElementById("form-heading");
+    const cancelEdit = document.getElementById("cancel-edit");
+
+    let editingId = null;
+
+    function showMessage(element, text, type = "error") {
+      element.replaceChildren();
+
+      const box = document.createElement("div");
+      box.className = "message " + type;
+      box.textContent = text;
+
+      element.appendChild(box);
+    }
+
+    async function api(path, options = {}) {
+      const response = await fetch(path, {
+        ...options,
+        credentials: "same-origin",
+        headers: {
+          "Accept": "application/json",
+          ...(options.body
+            ? { "Content-Type": "application/json" }
+            : {}),
+          ...options.headers
+        }
+      });
+
+      let data;
+
+      try {
+        data = await response.json();
+      } catch {
+        throw new Error("استجابة غير مفهومة من الخادم.");
+      }
+
+      if (!response.ok) {
+        if (response.status === 401) {
+          showLogin();
+        }
+
+        throw new Error(
+          data.message || "تعذر تنفيذ الطلب."
+        );
+      }
+
+      return data;
+    }
+
+    function showLogin() {
+      loginPanel.classList.remove("hidden");
+      dashboard.classList.add("hidden");
+    }
+
+    function showDashboard() {
+      loginPanel.classList.add("hidden");
+      dashboard.classList.remove("hidden");
+    }
+
+    async function loadNews() {
+      newsList.textContent = "جارٍ تحميل الأخبار...";
+
+      try {
+        const data = await api("/api/admin/news");
+
+        newsList.replaceChildren();
+
+        const articles = Array.isArray(data.news)
+          ? data.news
+          : [];
+
+        if (articles.length === 0) {
+          newsList.textContent = "لا توجد أخبار حتى الآن.";
+          return;
+        }
+
+        for (const article of articles) {
+          const item = document.createElement("article");
+          item.className = "news-item";
+
+          const heading = document.createElement("h3");
+          heading.textContent = article.title;
+
+          const body = document.createElement("p");
+          body.textContent = article.content;
+
+          const date = document.createElement("div");
+          date.className = "muted";
+          date.textContent = article.created_at
+            ? "تاريخ النشر: " + article.created_at
+            : "";
+
+          const actions = document.createElement("div");
+          actions.className = "actions";
+
+          const editButton = document.createElement("button");
+          editButton.className = "secondary";
+          editButton.textContent = "تعديل";
+          editButton.addEventListener("click", () => {
+            editingId = article.id;
+            titleInput.value = article.title || "";
+            contentInput.value = article.content || "";
+            formHeading.textContent = "تعديل الخبر";
+            saveButton.textContent = "حفظ التعديلات";
+            cancelEdit.classList.remove("hidden");
+            formMessage.replaceChildren();
+
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          });
+
+          const deleteButton = document.createElement("button");
+          deleteButton.className = "danger";
+          deleteButton.textContent = "حذف";
+
+          deleteButton.addEventListener("click", async () => {
+            if (!confirm(
+              "هل أنت متأكد من حذف هذا الخبر نهائيًا؟"
+            )) {
+              return;
+            }
+
+            deleteButton.disabled = true;
+
+            try {
+              const result = await api(
+                "/api/admin/news/" + encodeURIComponent(article.id),
+                { method: "DELETE" }
+              );
+
+              showMessage(
+                formMessage,
+                result.message,
+                "success"
+              );
+
+              if (editingId === article.id) {
+                resetForm();
+              }
+
+              await loadNews();
+            } catch (error) {
+              showMessage(formMessage, error.message);
+            } finally {
+              deleteButton.disabled = false;
+            }
+          });
+
+          actions.append(editButton, deleteButton);
+          item.append(heading, body, date, actions);
+          newsList.appendChild(item);
+        }
+      } catch (error) {
+        newsList.replaceChildren();
+
+        const message = document.createElement("p");
+        message.className = "message error";
+        message.textContent = error.message;
+
+        const retry = document.createElement("button");
+        retry.className = "secondary";
+        retry.textContent = "إعادة المحاولة";
+        retry.addEventListener("click", loadNews);
+
+        newsList.append(message, retry);
+      }
+    }
+
+    function resetForm() {
+      editingId = null;
+      newsForm.reset();
+      formHeading.textContent = "نشر خبر جديد";
+      saveButton.textContent = "نشر الخبر";
+      cancelEdit.classList.add("hidden");
+      formMessage.replaceChildren();
+    }
+
+    loginForm.addEventListener("submit", async event => {
+      event.preventDefault();
+
+      const button = loginForm.querySelector("button");
+      button.disabled = true;
+      loginMessage.replaceChildren();
+
+      try {
+        const password = document.getElementById("password").value;
+
+        const result = await api("/api/admin/login", {
+          method: "POST",
+          body: JSON.stringify({ password })
+        });
+
+        document.getElementById("password").value = "";
+
+        showDashboard();
+
+        showMessage(
+          formMessage,
+          result.message,
+          "success"
+        );
+
+        await loadNews();
+      } catch (error) {
+        showMessage(loginMessage, error.message);
+      } finally {
+        button.disabled = false;
+      }
+    });
+
+    newsForm.addEventListener("submit", async event => {
+      event.preventDefault();
+
+      saveButton.disabled = true;
+
+      const title = titleInput.value.trim();
+      const content = contentInput.value.trim();
+
+      try {
+        const editing = editingId !== null;
+
+        const result = await api(
+          editing
+            ? "/api/admin/news/" + encodeURIComponent(editingId)
+            : "/api/admin/news",
+          {
+            method: editing ? "PATCH" : "POST",
+            body: JSON.stringify({ title, content })
+          }
+        );
+
+        resetForm();
+
+        showMessage(
+          formMessage,
+          result.message,
+          "success"
+        );
+
+        await loadNews();
+      } catch (error) {
+        showMessage(formMessage, error.message);
+      } finally {
+        saveButton.disabled = false;
+      }
+    });
+
+    cancelEdit.addEventListener("click", resetForm);
+
+    document.getElementById("refresh-button")
+      .addEventListener("click", loadNews);
+
+    document.getElementById("logout-button")
+      .addEventListener("click", async () => {
+        try {
+          await api("/api/admin/logout", {
+            method: "POST"
+          });
+        } catch (error) {
+          showMessage(formMessage, error.message);
+        }
+
+        showLogin();
+        resetForm();
+        loginMessage.replaceChildren();
+      });
+
+    async function initialize() {
+      try {
+        const response = await fetch(
+          "/api/admin/news",
+          {
+            credentials: "same-origin",
+            headers: {
+              "Accept": "application/json"
+            }
+          }
+        );
+
+        if (response.ok) {
+          showDashboard();
+          await loadNews();
+        } else {
+          showLogin();
+        }
+      } catch {
+        showLogin();
+      }
+    }
+
+    initialize();
+  </script>
+</body>
+</html>
