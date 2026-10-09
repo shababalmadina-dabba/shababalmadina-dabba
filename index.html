@@ -1,563 +1,745 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>نادي شباب المدينة الدبة</title>
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;900&display=swap">
-
-<style>
-:root{
-  --red:#5a0508;
-  --deep:#3a0203;
-  --white:#fffaf8;
-  --tint:#f5eae8;
-  --ink:#2a0a0b;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>نادي شباب المدينة الدبة | الموقع الرسمي</title>
+<meta name="description" content="الموقع الرسمي لنادي شباب المدينة الدبة. تابع أخبار النادي ونتائج المباريات وأنشطة الفريق.">
+<meta name="theme-color" content="#59070b"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
+:root {
+  --red: #59070b;
+  --red-light: #7d1118;
+  --white: #ffffff;
+  --background: #f5f5f5;
+  --text: #1c1c1c;
+  --muted: #777777;
+  --border: #e9e9e9;
 }
 
-*{
-  box-sizing:border-box;
-  margin:0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-  font-family:Cairo,Tahoma,sans-serif;
-  background:var(--white);
-  color:var(--ink);
-  line-height:1.9;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.8;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1160px, 92%);
+  margin: auto;
+}
+
+/* الشريط العلوي */
+
+.topbar {
+  background: var(--red);
+  color: var(--white);
+  padding: 8px 0;
+  font-size: 12px;
+}
+
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 /* رأس الموقع */
 
-header{
-  background:radial-gradient(
-    circle at 50% 30%,
-    var(--red),
-    var(--deep)
-  );
-  color:var(--white);
-  text-align:center;
-  padding:35px 20px;
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
 }
 
-header h1{
-  font-size:clamp(1.8rem,7vw,2.8rem);
-  font-weight:900;
-  line-height:1.3;
+.header-inner {
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 
-header p{
-  opacity:.85;
-  margin-top:5px;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
-/* القائمة */
-
-nav{
-  position:sticky;
-  top:0;
-  z-index:5;
-  display:flex;
-  background:var(--white);
-  border-bottom:3px solid var(--red);
-  box-shadow:0 2px 8px rgba(0,0,0,.08);
+.club-symbol {
+  width: 62px;
+  height: 70px;
+  background: var(--red);
+  color: white;
+  clip-path: polygon(8% 0, 92% 0, 92% 70%, 50% 100%, 8% 70%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  flex-shrink: 0;
 }
 
-nav a{
-  flex:1;
-  text-align:center;
-  padding:12px 4px;
-  font-weight:600;
-  color:var(--red);
-  text-decoration:none;
-  transition:.2s;
+.club-symbol strong {
+  font-size: 25px;
+  font-weight: 900;
 }
 
-nav a:hover{
-  background:var(--tint);
+.club-symbol span {
+  font-size: 9px;
+  font-weight: 700;
 }
 
-nav a[aria-current="page"]{
-  background:var(--red);
-  color:var(--white);
+.brand-text h1 {
+  color: var(--red);
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1.6;
 }
 
-/* المحتوى */
-
-main{
-  max-width:760px;
-  margin:auto;
-  padding:32px 20px 48px;
+.brand-text p {
+  color: var(--muted);
+  font-size: 11px;
 }
 
-h2{
-  font-size:1.7rem;
-  font-weight:900;
-  color:var(--red);
-  margin-bottom:12px;
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-size: 13px;
+  font-weight: 700;
 }
 
-/* عن النادي */
-
-.pts{
-  display:grid;
-  gap:12px;
-  margin-top:20px;
+.menu a {
+  transition: color 0.2s;
 }
 
-.pt{
-  border-inline-start:6px solid var(--red);
-  background:var(--tint);
-  padding:10px 16px;
+.menu a:hover {
+  color: var(--red-light);
 }
 
-.pt b{
-  color:var(--red);
+.menu .membership {
+  background: var(--red);
+  color: white;
+  padding: 9px 16px;
+  border-radius: 5px;
 }
 
-/* اللاعبين والمتجر */
+/* الواجهة الرئيسية */
 
-.grid{
-  display:grid;
-  grid-template-columns:
-  repeat(auto-fill,minmax(150px,1fr));
-  gap:16px;
-  margin-top:16px;
+.hero {
+  background:
+    radial-gradient(ellipse at 15% 15%, rgba(255,255,255,.10), transparent 38%),
+    linear-gradient(120deg, #310306, #59070b 55%, #80121a);
+  color: white;
+  position: relative;
+  overflow: hidden;
 }
 
-.card{
-  background:var(--tint);
-  border-bottom:4px solid var(--red);
-  overflow:hidden;
+.hero::after {
+  content: "1956";
+  position: absolute;
+  left: -25px;
+  bottom: -100px;
+  font-size: clamp(150px, 27vw, 340px);
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(255,255,255,.035);
+  pointer-events: none;
+  direction: ltr;
 }
 
-.card .ph{
-  aspect-ratio:1;
-  background:var(--red) center/cover;
-  display:grid;
-  place-items:center;
-  color:var(--white);
-  font-size:2.6rem;
-  font-weight:900;
+.hero-inner {
+  min-height: 430px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
-.card .in{
-  padding:10px 12px;
+.hero-content {
+  max-width: 680px;
 }
 
-.card b{
-  display:block;
+.eyebrow {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,.35);
+  padding: 5px 13px;
+  border-radius: 3px;
+  font-size: 12px;
+  margin-bottom: 20px;
 }
 
-.card small{
-  color:#6b3a3c;
+.hero h2 {
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 900;
+  line-height: 1.45;
+  margin-bottom: 16px;
 }
 
-.buy{
-  display:block;
-  margin-top:8px;
-  background:var(--red);
-  color:var(--white);
-  text-align:center;
-  padding:4px;
-  text-decoration:none;
-  font-weight:600;
+.hero h2 span {
+  color: #f0c6c8;
 }
 
-.empty{
-  background:var(--tint);
-  padding:20px;
-  border:2px dashed var(--red);
-  margin-top:12px;
+.hero p {
+  color: rgba(255,255,255,.82);
+  font-size: 15px;
+  max-width: 550px;
+  margin-bottom: 28px;
 }
 
-/* العضوية الإلكترونية */
-
-.membership{
-  background:var(--tint);
-  border:2px solid var(--red);
-  padding:25px 20px;
-  margin-top:20px;
-  text-align:center;
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.membership h3{
-  color:var(--red);
-  font-size:1.4rem;
-  margin-bottom:8px;
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 10px 23px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 800;
+  transition: transform .2s, background .2s;
 }
 
-.membership p{
-  color:#633a3b;
+.button:hover {
+  transform: translateY(-2px);
 }
 
-/* المستقبل */
-
-.future{
-  margin-top:18px;
-  font-size:.9rem;
-  opacity:.75;
+.button-white {
+  background: white;
+  color: var(--red);
 }
 
-/* الفوتر */
-
-footer{
-  background:var(--deep);
-  color:var(--white);
-  text-align:center;
-  padding:20px;
-  font-size:.9rem;
+.button-outline {
+  border: 1px solid rgba(255,255,255,.55);
+  color: white;
 }
 
-/* الهاتف */
+/* الإحصائيات */
 
-@media(max-width:600px){
+.stats {
+  background: white;
+  border-bottom: 1px solid var(--border);
+}
 
-  nav a{
-    font-size:12px;
-    padding:10px 3px;
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.stat {
+  text-align: center;
+  padding: 24px 12px;
+  border-left: 1px solid var(--border);
+}
+
+.stat:last-child {
+  border-left: none;
+}
+
+.stat strong {
+  display: block;
+  color: var(--red);
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.stat span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* الأقسام */
+
+.section {
+  padding: 65px 0;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 15px;
+  margin-bottom: 28px;
+}
+
+.section-heading h2 {
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.section-label {
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .5px;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.news-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.06);
+}
+
+.news-image {
+  height: 175px;
+  background: linear-gradient(135deg, #400408, #8b171e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,.85);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.news-image.light {
+  background: linear-gradient(135deg, #e7dada, #f8eeee);
+  color: var(--red);
+}
+
+.news-image.dark {
+  background: linear-gradient(135deg, #171717, #494949);
+}
+
+.news-content {
+  padding: 20px;
+}
+
+.news-tag {
+  display: inline-block;
+  background: #f7e9ea;
+  color: var(--red);
+  padding: 3px 9px;
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.news-content h3 {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+
+.news-content p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* قسم النادي */
+
+.about {
+  background: white;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 55px;
+}
+
+.about-mark {
+  min-height: 280px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #3a0306, #790e15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 30px;
+}
+
+.about-mark strong {
+  display: block;
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.about-mark span {
+  display: block;
+  font-size: 13px;
+  color: #edc9cb;
+}
+
+.about-text h2 {
+  font-size: 28px;
+  font-weight: 900;
+  margin: 8px 0 16px;
+}
+
+.about-text p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* التذييل */
+
+footer {
+  background: #200204;
+  color: white;
+  padding: 40px 0 20px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 30px;
+  padding-bottom: 30px;
+}
+
+.footer-brand {
+  max-width: 400px;
+}
+
+.footer-brand h2 {
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.footer-brand p {
+  font-size: 12px;
+  color: rgba(255,255,255,.65);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 12px;
+}
+
+.footer-links a:hover {
+  color: #e8b5b8;
+}
+
+.copyright {
+  border-top: 1px solid rgba(255,255,255,.13);
+  padding-top: 17px;
+  text-align: center;
+  color: rgba(255,255,255,.55);
+  font-size: 11px;
+}
+
+/* الهواتف */
+
+@media (max-width: 800px) {
+  .header-inner {
+    min-height: 85px;
+    flex-wrap: wrap;
+    padding: 14px 0;
   }
 
-  header{
-    padding:30px 15px;
+  .brand-text h1 {
+    font-size: 16px;
   }
 
-  header h1{
-    font-size:1.8rem;
+  .club-symbol {
+    width: 53px;
+    height: 61px;
   }
 
+  .menu {
+    width: 100%;
+    overflow-x: auto;
+    padding: 8px 0 3px;
+    gap: 20px;
+    white-space: nowrap;
+  }
+
+  .hero-inner {
+    min-height: 370px;
+    padding-top: 55px;
+    padding-bottom: 55px;
+  }
+
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .about-mark {
+    min-height: 220px;
+  }
 }
-</style>
-</head>
 
-<body>
+@media (max-width: 520px) {
+  .topbar-inner {
+    font-size: 10px;
+  }
 
-<header>
-  <h1>نادي شباب المدينة الدبة</h1>
-  <p>تأسس عام 2013</p>
-</header>
+  .hero h2 {
+    font-size: 32px;
+  }
 
-<nav aria-label="القوائم">
+  .hero p {
+    font-size: 13px;
+  }
 
-  <a href="#about">
-    عن النادي
-  </a>
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-  <a href="#players">
-    اللاعبون
-  </a>
+  .stat {
+    padding: 17px 5px;
+  }
 
-  <a href="#membership">
-    العضوية الإلكترونية
-  </a>
+  .stat strong {
+    font-size: 20px;
+  }
 
-  <a href="#store">
-    المتجر الإلكتروني
-  </a>
+  .stat span {
+    font-size: 10px;
+  }
 
+  .section {
+    padding: 45px 0;
+  }
+
+  .section-heading h2 {
+    font-size: 21px;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-image {
+    height: 190px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+  }
+
+  .about-text h2 {
+    font-size: 24px;
+  }
+}
+</style></head><body><div class="topbar">
+  <div class="container topbar-inner">
+    <span>الموقع الرسمي لنادي شباب المدينة الدبة</span>
+    <span>الولاية الشمالية — السودان</span>
+  </div>
+</div><header>
+  <div class="container header-inner"><a href="#home" class="brand">
+  <div class="club-symbol">
+    <strong>ش</strong>
+    <span>المدينة</span>
+  </div>
+
+  <div class="brand-text">
+    <h1>نادي شباب المدينة</h1>
+    <p>الدبة · الولاية الشمالية · السودان</p>
+  </div>
+</a>
+
+<nav class="menu" aria-label="القائمة الرئيسية">
+  <a href="#home">الرئيسية</a>
+  <a href="#news">أخبار النادي</a>
+  <a href="#about">عن النادي</a>
+  <a href="#contact">تواصل معنا</a>
+  <a href="#membership" class="membership">العضوية الإلكترونية</a>
 </nav>
 
-<main id="view"></main>
+  </div>
+</header><main><section class="hero" id="home">
+  <div class="container hero-inner">
+    <div class="hero-content">  <span class="eyebrow">أهلًا بكم في بيت المدينة</span>
 
-<footer>
-  © نادي شباب المدينة الدبة
-</footer>
+  <h2>
+    شباب المدينة<br>
+    <span>حكاية انتماء وطموح</span>
+  </h2>
 
-<script src="data.js"></script>
+  <p>
+    من الدبة تبدأ الحكاية. هنا يجتمع الشغف الرياضي وروح المجتمع
+    تحت راية نادي شباب المدينة، حيث نصنع الذكريات ونمضي نحو المستقبل.
+  </p>
 
-<script>
+  <div class="hero-actions">
+    <a href="#news" class="button button-white">اكتشف أخبار النادي</a>
+    <a href="#about" class="button button-outline">تعرف على النادي</a>
+  </div>
 
-const esc=s=>String(s).replace(
-  /[&<>"]/g,
-  c=>({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;"
-  }[c])
-);
+</div>
 
-const photo=(p,fb)=>
-  p
-  ? `<div class="ph" style="background-image:url('${esc(p)}')"></div>`
-  : `<div class="ph">${esc(fb)}</div>`;
+  </div>
+</section><section class="stats" aria-label="معلومات النادي">
+  <div class="container stats-grid"><div class="stat">
+  <strong>الدبة</strong>
+  <span>موطن النادي</span>
+</div>
 
+<div class="stat">
+  <strong>شباب المدينة</strong>
+  <span>اسم يجمعنا</span>
+</div>
 
-const views={
+<div class="stat">
+  <strong>السودان</strong>
+  <span>الانتماء والوطن</span>
+</div>
 
+  </div>
+</section><section class="section" id="news">
+  <div class="container"><div class="section-heading">
+  <div>
+    <span class="section-label">المركز الإعلامي</span>
+    <h2>أخبار النادي</h2>
+    <p>تابع أخبار وفعاليات نادي شباب المدينة الدبة.</p>
+  </div>
+</div>
 
-/* عن النادي */
+<div class="news-grid">
 
-about(){
-
-  const a=SITE.about;
-
-  return `
-
-    <h2>عن النادي</h2>
-
-    <p>
-      ${esc(a.intro)}
-    </p>
-
-    <div class="pts">
-
-      ${a.points.map(p=>
-
-        `<div class="pt">
-
-          <b>${esc(p.title)}:</b>
-
-          ${esc(p.text)}
-
-        </div>`
-
-      ).join("")}
-
+  <article class="news-card">
+    <div class="news-image">
+      شباب المدينة
     </div>
+    <div class="news-content">
+      <span class="news-tag">أخبار النادي</span>
+      <h3>مرحبًا بكم في الموقع الرسمي لنادي شباب المدينة</h3>
+      <p>منصة النادي الإلكترونية ومساحة تجمع جماهيره ومحبيه.</p>
+    </div>
+  </article>
 
-    <p style="margin-top:20px">
+  <article class="news-card">
+    <div class="news-image light">
+      المركز الإعلامي
+    </div>
+    <div class="news-content">
+      <span class="news-tag">المركز الإعلامي</span>
+      <h3>مساحة جديدة لأخبار الفريق وأنشطته</h3>
+      <p>سيتم تخصيص هذا القسم لنشر الأخبار والتغطيات الإعلامية.</p>
+    </div>
+  </article>
 
-      ${esc(a.contact)}
+  <article class="news-card">
+    <div class="news-image dark">
+      جماهير المدينة
+    </div>
+    <div class="news-content">
+      <span class="news-tag">مجتمع النادي</span>
+      <h3>جماهيرنا جزء من حكاية النادي</h3>
+      <p>مساحة للاحتفاء بالجماهير والمبادرات والأنشطة المجتمعية.</p>
+    </div>
+  </article>
 
-    </p>
+</div>
 
-  `;
+  </div>
+</section><section class="section about" id="about">
+  <div class="container about-inner"><div class="about-mark">
+  <div>
+    <strong>شباب المدينة</strong>
+    <span>الدبة — الولاية الشمالية</span>
+  </div>
+</div>
 
-},
+<div class="about-text">
+  <span class="section-label">هويتنا</span>
+  <h2>نادي يجمعنا</h2>
 
+  <p>
+    نادي شباب المدينة الدبة مساحة رياضية واجتماعية تجمع اللاعبين
+    والجماهير ومحبي الرياضة، وتعمل على ترسيخ روح الانتماء والتعاون
+    وتمثيل المدينة بصورة تليق بأهلها.
+  </p>
 
-/* اللاعبون */
+  <a href="#contact" class="button" style="background:var(--red);color:white">
+    تواصل مع النادي
+  </a>
+</div>
 
-players(){
-
-  const l=SITE.players;
-
-  return `
-
-    <h2>اللاعبون</h2>
-
-    ${
-      l.length
-
-      ?
-
-      `<div class="grid">
-
-        ${l.map(p=>
-
-          `<div class="card">
-
-            ${photo(
-              p.photo,
-              p.number ?? ""
-            )}
-
-            <div class="in">
-
-              <b>
-                ${esc(p.name)}
-              </b>
-
-              <small>
-
-                ${esc(p.position || "")}
-
-                ${
-                  p.number
-                  ? " • رقم " + esc(p.number)
-                  : ""
-                }
-
-              </small>
-
-            </div>
-
-          </div>`
-
-        ).join("")}
-
-      </div>`
-
-      :
-
-      `<div class="empty">
-
-        لم تُضف قائمة اللاعبين بعد.
-
-      </div>`
-    }
-
-  `;
-
-},
-
-
-/* العضوية الإلكترونية */
-
-membership(){
-
-  return `
-
-    <h2>
-      العضوية الإلكترونية
-    </h2>
-
-    <div class="membership">
-
-      <h3>
-        عضوية نادي شباب المدينة الدبة
-      </h3>
-
-      <p>
-        قريبًا سيتم إطلاق خدمة العضوية الإلكترونية
-        لنادي شباب المدينة الدبة.
-      </p>
-
-      <p style="margin-top:10px">
-
-        ستكون هذه الصفحة مخصصة لعضوية
-        جماهير ومحبي النادي.
-
-      </p>
-
-      <div class="future">
-
-        سيتم تطوير نظام العضوية في المراحل القادمة.
-
+  </div>
+</section><section class="section" id="membership">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">كن جزءًا من الحكاية</span>
+        <h2>العضوية الإلكترونية</h2>
+        <p>سيتم تطوير نظام إلكتروني للتعريف بعضوية النادي وتسجيل الأعضاء.</p>
       </div>
-
     </div>
+  </div>
+</section></main><footer id="contact">
+  <div class="container"><div class="footer-top">
 
-  `;
+  <div class="footer-brand">
+    <h2>نادي شباب المدينة الدبة</h2>
+    <p>
+      الموقع الإلكتروني للنادي ومساحته الرسمية للتواصل مع الجماهير
+      ومتابعة الأخبار والأنشطة.
+    </p>
+  </div>
 
-},
+  <nav class="footer-links" aria-label="روابط الموقع">
+    <a href="#home">الرئيسية</a>
+    <a href="#news">الأخبار</a>
+    <a href="#about">عن النادي</a>
+    <a href="#membership">العضوية</a>
+  </nav>
 
+</div>
 
-/* المتجر */
+<div class="copyright">
+  جميع الحقوق محفوظة لنادي شباب المدينة الدبة © 2026
+</div>
 
-store(){
-
-  const l=SITE.products;
-
-  return `
-
-    <h2>
-      المتجر الإلكتروني
-    </h2>
-
-    ${
-      l.length
-
-      ?
-
-      `<div class="grid">
-
-        ${l.map(p=>
-
-          `<div class="card">
-
-            ${photo(
-              p.photo,
-              "★"
-            )}
-
-            <div class="in">
-
-              <b>
-                ${esc(p.name)}
-              </b>
-
-              <small>
-                ${esc(p.price || "")}
-              </small>
-
-              <a
-                class="buy"
-                href="https://wa.me/${esc(SITE.whatsapp)}?text=${encodeURIComponent(
-                  "أرغب بطلب: " + p.name
-                )}"
-              >
-                اطلب عبر واتساب
-              </a>
-
-            </div>
-
-          </div>`
-
-        ).join("")}
-
-      </div>`
-
-      :
-
-      `<div class="empty">
-
-        لا توجد منتجات حاليًا.
-
-        ترقبوا قميص النادي ومنتجاته قريبًا.
-
-      </div>`
-    }
-
-  `;
-
-}
-
-};
-
-
-/* تشغيل الصفحات */
-
-function route(){
-
-  const k=
-    (location.hash || "#about").slice(1);
-
-  const v=
-    views[k]
-    ? k
-    : "about";
-
-  document.getElementById("view")
-    .innerHTML=views[v]();
-
-  document
-    .querySelectorAll("nav a")
-    .forEach(a=>{
-
-      if(a.hash === "#" + v){
-
-        a.setAttribute(
-          "aria-current",
-          "page"
-        );
-
-      }else{
-
-        a.removeAttribute(
-          "aria-current"
-        );
-
-      }
-
-    });
-
-}
-
-
-/* تغيير الصفحة */
-
-addEventListener(
-  "hashchange",
-  route
-);
-
-route();
-
-</script>
-
-</body>
-    </html>
+  </div>
+</footer></body>
+</html>
