@@ -237,7 +237,7 @@ export default {
         );
       }
 
-      // عرض طلبات العضوية.
+      // عرض طلبات العضوية للإدارة.
       if (
         path === "/api/admin/requests" &&
         request.method === "GET"
@@ -273,7 +273,8 @@ export default {
               success: false,
               message: "تعذر تحميل الطلبات."
             },
-            500
+            500,
+            { "Cache-Control": "no-store" }
           );
         }
       }
@@ -378,6 +379,47 @@ export default {
         },
         404
       );
+    }
+
+    // قائمة الأعضاء العامة: الاسم ورقم العضوية فقط.
+    if (
+      path === "/api/members" &&
+      request.method === "GET"
+    ) {
+      try {
+        const result = await env.DB.prepare(`
+          SELECT
+            full_name,
+            membership_number
+          FROM membership_requests
+          WHERE status = 'approved'
+            AND membership_number IS NOT NULL
+            AND membership_number != ''
+          ORDER BY id DESC
+        `).all();
+
+        return json(
+          {
+            success: true,
+            members: result.results || []
+          },
+          200,
+          {
+            "Cache-Control": "no-store"
+          }
+        );
+      } catch {
+        return json(
+          {
+            success: false,
+            message: "تعذر تحميل قائمة الأعضاء."
+          },
+          500,
+          {
+            "Cache-Control": "no-store"
+          }
+        );
+      }
     }
 
     // استقبال طلب عضوية جديد.
