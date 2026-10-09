@@ -1,5 +1,17 @@
 {
-  "name": "shababalmadina-dabba",
-  "compatibility_date": "2026-10-01",
-  "assets": { "directory": "./" }
+"name": "shababalmadina-dabba",
+"main": "src/index.js",
+"compatibility_date": "2026-10-01",
+"assets": {
+"directory": "./",
+"binding": "ASSETS",
+"run_worker_first": ["/api/*"]
+},
+"d1_databases": [
+{
+"binding": "DB",
+"database_name": "shababalmadina-members",
+"database_id": "d60e188c-ebaf-4953-968c-91d8bebb1ebc"
+}
+]
 }
