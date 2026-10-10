@@ -1,1203 +1,1066 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نادي شباب المدينة الدبة | الموقع الرسمي</title>
-<meta name="description" content="الموقع الرسمي لنادي شباب المدينة الدبة. تابع أخبار النادي ونتائج المباريات وأنشطة الفريق وسجل عضويتك إلكترونيًا.">
-<meta name="theme-color" content="#59070b">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --red: #59070b;
-  --red-light: #7d1118;
-  --white: #ffffff;
-  --background: #f5f5f5;
-  --text: #1c1c1c;
-  --muted: #777777;
-  --border: #e9e9e9;
+<!DOCTYPE html><html lang="ar" dir="rtl">  <head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>نادي شباب المدينة الدبة | الموقع الرسمي</title><meta name="description" content="الموقع الرسمي لنادي شباب المدينة الدبة. تابع أخبار النادي ونتائج المباريات وأنشطة الفريق وسجل عضويتك إلكترونيًا.">  
+<meta name="theme-color" content="#59070b"><link rel="preconnect" href="https://fonts.googleapis.com">  
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><style>  
+:root {  
+  --red: #59070b;  
+  --red-light: #7d1118;  
+  --white: #ffffff;  
+  --background: #f5f5f5;  
+  --text: #1c1c1c;  
+  --muted: #777777;  
+  --border: #e9e9e9;  
+}  {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 html {
-  scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Cairo', sans-serif;
-  background: var(--background);
-  color: var(--text);
-  line-height: 1.8;
+font-family: 'Cairo', sans-serif;
+background: var(--background);
+color: var(--text);
+line-height: 1.8;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+color: inherit;
+text-decoration: none;
 }
 
 .container {
-  width: min(1160px, 92%);
-  margin: auto;
+width: min(1160px, 92%);
+margin: auto;
 }
 
-/* الشريط العلوي */
 .topbar {
-  background: var(--red);
-  color: var(--white);
-  padding: 8px 0;
-  font-size: 12px;
+background: var(--red);
+color: var(--white);
+padding: 8px 0;
+font-size: 12px;
 }
 
 .topbar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 12px;
 }
 
-/* رأس الموقع بدون شعار */
 header {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
+background: var(--white);
+border-bottom: 1px solid var(--border);
 }
 
 .header-inner {
-  min-height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+min-height: 100px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 20px;
 }
 
 .brand {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+display: flex;
+align-items: center;
+gap: 14px;
+}
+
+.club-symbol {
+width: 62px;
+height: 70px;
+background: var(--red);
+color: white;
+clip-path: polygon(8% 0, 92% 0, 92% 70%, 50% 100%, 8% 70%);
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+line-height: 1.2;
+flex-shrink: 0;
+}
+
+.club-symbol strong {
+font-size: 25px;
+font-weight: 900;
+}
+
+.club-symbol span {
+font-size: 9px;
+font-weight: 700;
 }
 
 .brand-text h1 {
-  color: var(--red);
-  font-size: 19px;
-  font-weight: 900;
-  line-height: 1.6;
+color: var(--red);
+font-size: 19px;
+font-weight: 900;
+line-height: 1.6;
 }
 
 .brand-text p {
-  color: var(--muted);
-  font-size: 11px;
+color: var(--muted);
+font-size: 11px;
 }
 
-/* القائمة الرئيسية */
 .menu {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  font-size: 13px;
-  font-weight: 700;
+display: flex;
+align-items: center;
+gap: 22px;
+font-size: 13px;
+font-weight: 700;
 }
 
 .menu a {
-  transition: color 0.2s;
+transition: color 0.2s;
 }
 
 .menu a:hover {
-  color: var(--red-light);
+color: var(--red-light);
 }
 
 .menu .membership {
-  background: var(--red);
-  color: white;
-  padding: 9px 16px;
-  border-radius: 5px;
+background: var(--red);
+color: white;
+padding: 9px 16px;
+border-radius: 5px;
 }
 
-/* الواجهة الرئيسية */
 .hero {
-  background:
-    radial-gradient(ellipse at 15% 15%, rgba(255,255,255,.10), transparent 38%),
-    linear-gradient(120deg, #310306, #59070b 55%, #80121a);
-  color: white;
-  position: relative;
-  overflow: hidden;
+background:
+radial-gradient(ellipse at 15% 15%, rgba(255,255,255,.10), transparent 38%),
+linear-gradient(120deg, #310306, #59070b 55%, #80121a);
+color: white;
+position: relative;
+overflow: hidden;
 }
 
 .hero::after {
-  content: "1956";
-  position: absolute;
-  left: -25px;
-  bottom: -100px;
-  font-size: clamp(150px, 27vw, 340px);
-  font-weight: 900;
-  line-height: 1;
-  color: rgba(255,255,255,.035);
-  pointer-events: none;
-  direction: ltr;
+content: "1956";
+position: absolute;
+left: -25px;
+bottom: -100px;
+font-size: clamp(150px, 27vw, 340px);
+font-weight: 900;
+line-height: 1;
+color: rgba(255,255,255,.035);
+pointer-events: none;
+direction: ltr;
 }
 
 .hero-inner {
-  min-height: 430px;
-  padding-top: 70px;
-  padding-bottom: 70px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  z-index: 1;
+min-height: 430px;
+padding-top: 70px;
+padding-bottom: 70px;
+display: flex;
+align-items: center;
+position: relative;
+z-index: 1;
 }
 
 .hero-content {
-  max-width: 680px;
+max-width: 680px;
 }
 
 .eyebrow {
-  display: inline-block;
-  border: 1px solid rgba(255,255,255,.35);
-  padding: 5px 13px;
-  border-radius: 3px;
-  font-size: 12px;
-  margin-bottom: 20px;
+display: inline-block;
+border: 1px solid rgba(255,255,255,.35);
+padding: 5px 13px;
+border-radius: 3px;
+font-size: 12px;
+margin-bottom: 20px;
 }
 
 .hero h2 {
-  font-size: clamp(32px, 5vw, 54px);
-  font-weight: 900;
-  line-height: 1.45;
-  margin-bottom: 16px;
+font-size: clamp(32px, 5vw, 54px);
+font-weight: 900;
+line-height: 1.45;
+margin-bottom: 16px;
 }
 
 .hero h2 span {
-  color: #f0c6c8;
+color: #f0c6c8;
 }
 
 .hero p {
-  color: rgba(255,255,255,.82);
-  font-size: 15px;
-  max-width: 550px;
-  margin-bottom: 28px;
+color: rgba(255,255,255,.82);
+font-size: 15px;
+max-width: 550px;
+margin-bottom: 28px;
 }
 
 .hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+display: flex;
+align-items: center;
+gap: 12px;
+flex-wrap: wrap;
 }
 
 .button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 10px 23px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 800;
-  transition: transform .2s, background .2s;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-height: 46px;
+padding: 10px 23px;
+border-radius: 4px;
+font-size: 13px;
+font-weight: 800;
+transition: transform .2s, background .2s;
 }
 
 .button:hover {
-  transform: translateY(-2px);
+transform: translateY(-2px);
 }
 
 .button-white {
-  background: white;
-  color: var(--red);
+background: white;
+color: var(--red);
 }
 
 .button-outline {
-  border: 1px solid rgba(255,255,255,.55);
-  color: white;
+border: 1px solid rgba(255,255,255,.55);
+color: white;
 }
 
-/* إحصائيات النادي */
 .stats {
-  background: white;
-  border-bottom: 1px solid var(--border);
+background: white;
+border-bottom: 1px solid var(--border);
 }
 
 .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+display: grid;
+grid-template-columns: repeat(3, 1fr);
 }
 
 .stat {
-  text-align: center;
-  padding: 24px 12px;
-  border-left: 1px solid var(--border);
+text-align: center;
+padding: 24px 12px;
+border-left: 1px solid var(--border);
 }
 
 .stat:last-child {
-  border-left: none;
+border-left: none;
 }
 
 .stat strong {
-  display: block;
-  color: var(--red);
-  font-size: 25px;
-  font-weight: 900;
+display: block;
+color: var(--red);
+font-size: 25px;
+font-weight: 900;
 }
 
 .stat span {
-  color: var(--muted);
-  font-size: 12px;
+color: var(--muted);
+font-size: 12px;
 }
 
-/* الأقسام */
 .section {
-  padding: 65px 0;
+padding: 65px 0;
 }
 
 .section-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 15px;
-  margin-bottom: 28px;
+display: flex;
+justify-content: space-between;
+align-items: end;
+gap: 15px;
+margin-bottom: 28px;
 }
 
 .section-heading h2 {
-  font-size: 25px;
-  font-weight: 900;
+font-size: 25px;
+font-weight: 900;
 }
 
 .section-heading p {
-  color: var(--muted);
-  font-size: 13px;
-  margin-top: 4px;
+color: var(--muted);
+font-size: 13px;
+margin-top: 4px;
 }
 
 .section-label {
-  color: var(--red);
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: .5px;
+color: var(--red);
+font-size: 11px;
+font-weight: 900;
+letter-spacing: .5px;
 }
 
-/* الأخبار */
 .news-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 20px;
 }
 
 .news-card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 7px;
-  overflow: hidden;
-  transition: transform .2s, box-shadow .2s;
+background: white;
+border: 1px solid var(--border);
+border-radius: 7px;
+overflow: hidden;
+transition: transform .2s, box-shadow .2s;
 }
 
 .news-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0,0,0,.06);
+transform: translateY(-4px);
+box-shadow: 0 12px 30px rgba(0,0,0,.06);
 }
 
 .news-image {
-  height: 175px;
-  background: linear-gradient(135deg, #400408, #8b171e);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255,255,255,.85);
-  font-size: 13px;
-  font-weight: 700;
+height: 175px;
+background: linear-gradient(135deg, #400408, #8b171e);
+display: flex;
+align-items: center;
+justify-content: center;
+color: rgba(255,255,255,.85);
+font-size: 13px;
+font-weight: 700;
 }
 
 .news-image.light {
-  background: linear-gradient(135deg, #e7dada, #f8eeee);
-  color: var(--red);
+background: linear-gradient(135deg, #e7dada, #f8eeee);
+color: var(--red);
 }
 
 .news-image.dark {
-  background: linear-gradient(135deg, #171717, #494949);
+background: linear-gradient(135deg, #171717, #494949);
 }
 
 .news-content {
-  padding: 20px;
+padding: 20px;
 }
 
 .news-tag {
-  display: inline-block;
-  background: #f7e9ea;
-  color: var(--red);
-  padding: 3px 9px;
-  font-size: 10px;
-  font-weight: 800;
-  border-radius: 3px;
-  margin-bottom: 10px;
+display: inline-block;
+background: #f7e9ea;
+color: var(--red);
+padding: 3px 9px;
+font-size: 10px;
+font-weight: 800;
+border-radius: 3px;
+margin-bottom: 10px;
 }
 
 .news-content h3 {
-  font-size: 16px;
-  font-weight: 800;
-  line-height: 1.8;
-  margin-bottom: 8px;
+font-size: 16px;
+font-weight: 800;
+line-height: 1.8;
+margin-bottom: 8px;
 }
 
 .news-content p {
-  color: var(--muted);
-  font-size: 12px;
+color: var(--muted);
+font-size: 12px;
 }
 
-/* قسم عن النادي */
 .about {
-  background: white;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+background: white;
+border-top: 1px solid var(--border);
+border-bottom: 1px solid var(--border);
 }
 
 .about-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 55px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+align-items: center;
+gap: 55px;
 }
 
 .about-mark {
-  min-height: 280px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #3a0306, #790e15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-  padding: 30px;
+min-height: 280px;
+border-radius: 8px;
+background: linear-gradient(135deg, #3a0306, #790e15);
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+text-align: center;
+padding: 30px;
 }
 
 .about-mark strong {
-  display: block;
-  font-size: 36px;
-  font-weight: 900;
+display: block;
+font-size: 36px;
+font-weight: 900;
 }
 
 .about-mark span {
-  display: block;
-  font-size: 13px;
-  color: #edc9cb;
+display: block;
+font-size: 13px;
+color: #edc9cb;
 }
 
 .about-text h2 {
-  font-size: 28px;
-  font-weight: 900;
-  margin: 8px 0 16px;
+font-size: 28px;
+font-weight: 900;
+margin: 8px 0 16px;
 }
 
 .about-text p {
-  color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 20px;
+color: var(--muted);
+font-size: 14px;
+margin-bottom: 20px;
 }
 
-/* العضوية الإلكترونية */
 .membership-section {
-  background: #f8f6f6;
+background: #f8f6f6;
 }
 
 .membership-box {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 28px;
-  max-width: 760px;
-  margin: auto;
-  box-shadow: 0 8px 25px rgba(0,0,0,.04);
+background: #fff;
+border: 1px solid var(--border);
+border-radius: 10px;
+padding: 28px;
+max-width: 760px;
+margin: auto;
+box-shadow: 0 8px 25px rgba(0,0,0,.04);
 }
 
 .membership-intro {
-  text-align: center;
-  margin-bottom: 25px;
+text-align: center;
+margin-bottom: 25px;
 }
 
 .membership-intro h3 {
-  color: var(--red);
-  font-size: 23px;
-  font-weight: 900;
-  margin-bottom: 8px;
+color: var(--red);
+font-size: 23px;
+font-weight: 900;
+margin-bottom: 8px;
 }
 
 .membership-intro p {
-  color: var(--muted);
-  font-size: 13px;
+color: var(--muted);
+font-size: 13px;
 }
 
 .payment-details {
-  background: #faf4f4;
-  border: 1px solid #ecd9da;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 25px;
+background: #faf4f4;
+border: 1px solid #ecd9da;
+border-radius: 8px;
+padding: 20px;
+margin-bottom: 25px;
 }
 
 .payment-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid #eadada;
-  font-size: 14px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 12px;
+padding: 10px 0;
+border-bottom: 1px solid #eadada;
+font-size: 14px;
 }
 
 .payment-row:last-child {
-  border-bottom: none;
+border-bottom: none;
 }
 
 .payment-row span {
-  color: var(--muted);
+color: var(--muted);
 }
 
 .payment-row strong {
-  color: var(--red);
-  font-weight: 900;
-  text-align: left;
-  overflow-wrap: anywhere;
+color: var(--red);
+font-weight: 900;
+text-align: left;
+overflow-wrap: anywhere;
 }
 
 .membership-form {
-  display: grid;
-  gap: 16px;
+display: grid;
+gap: 16px;
 }
 
 .form-field label {
-  display: block;
-  font-size: 13px;
-  font-weight: 800;
-  margin-bottom: 7px;
+display: block;
+font-size: 13px;
+font-weight: 800;
+margin-bottom: 7px;
 }
 
 .form-field input,
 .form-field select {
-  width: 100%;
-  min-height: 48px;
-  padding: 12px;
-  font-family: inherit;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background: #fff;
-  outline: none;
+width: 100%;
+min-height: 48px;
+padding: 12px;
+font-family: inherit;
+font-size: 14px;
+border: 1px solid #ddd;
+border-radius: 5px;
+background: #fff;
+outline: none;
 }
 
 .form-field input:focus,
 .form-field select:focus {
-  border-color: var(--red);
+border-color: var(--red);
 }
 
 .form-note {
-  color: var(--muted);
-  font-size: 12px;
+color: var(--muted);
+font-size: 12px;
 }
 
 .membership-submit,
 .whatsapp-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 48px;
-  padding: 12px 18px;
-  border: none;
-  border-radius: 5px;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 900;
-  cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+min-height: 48px;
+padding: 12px 18px;
+border: none;
+border-radius: 5px;
+font-family: inherit;
+font-size: 14px;
+font-weight: 900;
+cursor: pointer;
 }
 
 .membership-submit {
-  background: var(--red);
-  color: #fff;
+background: var(--red);
+color: #fff;
 }
 
 .membership-submit:disabled {
-  opacity: .6;
-  cursor: wait;
+opacity: .6;
+cursor: wait;
 }
 
 .whatsapp-button {
-  background: #167c46;
-  color: #fff;
-  margin-top: 12px;
+background: #167c46;
+color: #fff;
+margin-top: 12px;
 }
 
 .membership-message {
-  display: none;
-  padding: 12px;
-  border-radius: 5px;
-  font-size: 13px;
-  margin-top: 15px;
-  overflow-wrap: anywhere;
+display: none;
+padding: 12px;
+border-radius: 5px;
+font-size: 13px;
+margin-top: 15px;
+overflow-wrap: anywhere;
 }
 
 .membership-message.success {
-  display: block;
-  background: #e9f7ef;
-  color: #17663b;
+display: block;
+background: #e9f7ef;
+color: #17663b;
 }
 
 .membership-message.error {
-  display: block;
-  background: #fff0f0;
-  color: #a30000;
+display: block;
+background: #fff0f0;
+color: #a30000;
 }
 
-/* التذييل */
 footer {
-  background: #200204;
-  color: white;
-  padding: 40px 0 20px;
+background: #200204;
+color: white;
+padding: 40px 0 20px;
 }
 
 .footer-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  gap: 30px;
-  padding-bottom: 30px;
+display: flex;
+justify-content: space-between;
+align-items: start;
+gap: 30px;
+padding-bottom: 30px;
 }
 
 .footer-brand {
-  max-width: 400px;
+max-width: 400px;
 }
 
 .footer-brand h2 {
-  font-size: 20px;
-  font-weight: 900;
-  margin-bottom: 8px;
+font-size: 20px;
+font-weight: 900;
+margin-bottom: 8px;
 }
 
 .footer-brand p {
-  font-size: 12px;
-  color: rgba(255,255,255,.65);
+font-size: 12px;
+color: rgba(255,255,255,.65);
 }
 
 .footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  font-size: 12px;
+display: flex;
+flex-wrap: wrap;
+gap: 18px;
+font-size: 12px;
 }
 
 .footer-links a:hover {
-  color: #e8b5b8;
+color: #e8b5b8;
 }
 
 .copyright {
-  border-top: 1px solid rgba(255,255,255,.13);
-  padding-top: 17px;
-  text-align: center;
-  color: rgba(255,255,255,.55);
-  font-size: 11px;
+border-top: 1px solid rgba(255,255,255,.13);
+padding-top: 17px;
+text-align: center;
+color: rgba(255,255,255,.55);
+font-size: 11px;
 }
 
-/* توافق الأجهزة اللوحية والهواتف */
 @media (max-width: 800px) {
-  .header-inner {
-    min-height: 85px;
-    flex-wrap: wrap;
-    padding: 14px 0;
-  }
+.header-inner {
+min-height: 85px;
+flex-wrap: wrap;
+padding: 14px 0;
+}
 
-  .brand-text h1 {
-    font-size: 16px;
-  }
+.brand-text h1 {
+font-size: 16px;
+}
 
-  .menu {
-    width: 100%;
-    overflow-x: auto;
-    padding: 8px 0 3px;
-    gap: 20px;
-    white-space: nowrap;
-  }
+.club-symbol {
+width: 53px;
+height: 61px;
+}
 
-  .hero-inner {
-    min-height: 370px;
-    padding-top: 55px;
-    padding-bottom: 55px;
-  }
+.menu {
+width: 100%;
+overflow-x: auto;
+padding: 8px 0 3px;
+gap: 20px;
+white-space: nowrap;
+}
 
-  .news-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.hero-inner {
+min-height: 370px;
+padding-top: 55px;
+padding-bottom: 55px;
+}
 
-  .about-inner {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
+.news-grid {
+grid-template-columns: repeat(2, 1fr);
+}
 
-  .about-mark {
-    min-height: 220px;
-  }
+.about-inner {
+grid-template-columns: 1fr;
+gap: 30px;
+}
+
+.about-mark {
+min-height: 220px;
+}
 }
 
 @media (max-width: 520px) {
-  .topbar-inner {
-    font-size: 10px;
-  }
-
-  .hero h2 {
-    font-size: 32px;
-  }
-
-  .hero p {
-    font-size: 13px;
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .stat {
-    padding: 17px 5px;
-  }
-
-  .stat strong {
-    font-size: 20px;
-  }
-
-  .stat span {
-    font-size: 10px;
-  }
-
-  .section {
-    padding: 45px 0;
-  }
-
-  .section-heading h2 {
-    font-size: 21px;
-  }
-
-  .news-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .news-image {
-    height: 190px;
-  }
-
-  .about-text h2 {
-    font-size: 24px;
-  }
-
-  .footer-top {
-    flex-direction: column;
-  }
-
-  .membership-box {
-    padding: 18px;
-  }
-
-  .membership-intro h3 {
-    font-size: 20px;
-  }
-
-  .payment-row {
-    font-size: 12px;
-  }
+.topbar-inner {
+font-size: 10px;
 }
-</style>
-</head>
 
-<body>
+.hero h2 {
+font-size: 32px;
+}
 
-<!-- الشريط العلوي -->
-<div class="topbar">
-  <div class="container topbar-inner">
-    <span>الموقع الرسمي لنادي شباب المدينة الدبة</span>
-    <span>الولاية الشمالية — السودان</span>
-  </div>
+.hero p {
+font-size: 13px;
+}
+
+.stats-grid {
+grid-template-columns: repeat(3, 1fr);
+}
+
+.stat {
+padding: 17px 5px;
+}
+
+.stat strong {
+font-size: 20px;
+}
+
+.stat span {
+font-size: 10px;
+}
+
+.section {
+padding: 45px 0;
+}
+
+.section-heading h2 {
+font-size: 21px;
+}
+
+.news-grid {
+grid-template-columns: 1fr;
+}
+
+.news-image {
+height: 190px;
+}
+
+.footer-top {
+flex-direction: column;
+}
+
+.about-text h2 {
+font-size: 24px;
+}
+
+.membership-box {
+padding: 18px;
+}
+
+.membership-intro h3 {
+font-size: 20px;
+}
+
+.payment-row {
+font-size: 12px;
+}
+}
+</style></head><body><div class="topbar">
+
+  <div class="container topbar-inner">  
+    <span>الموقع الرسمي لنادي شباب المدينة الدبة</span>  
+    <span>الولاية الشمالية — السودان</span>  
+  </div>  
+</div><header>  
+  <div class="container header-inner"><a href="#home" class="brand">  
+  <div class="club-symbol">  
+    <strong>ش</strong>  
+    <span>المدينة</span>  
+  </div>    <div class="brand-text">  
+    <h1>نادي شباب المدينة</h1>  
+    <p>الدبة · الولاية الشمالية · السودان</p>  
+  </div>  
+</a>  <nav class="menu" aria-label="القائمة الرئيسية">  
+  <a href="#home">الرئيسية</a>  
+  <a href="/news">أخبار النادي</a>  
+  <a href="#about">عن النادي</a>  
+  <a href="/members.html">أعضاء النادي</a>  
+  <a href="#contact">تواصل معنا</a>  
+  <a href="#membership" class="membership">العضوية الإلكترونية</a>  
+</nav>    </div>  
+</header><main><section class="hero" id="home">  
+  <div class="container hero-inner"><div class="hero-content">  
+  <span class="eyebrow">أهلًا بكم في بيت المدينة</span>    <h2>  
+    شباب المدينة<br>  
+    <span>حكاية انتماء وطموح</span>  
+  </h2>    <p>  
+    من الدبة تبدأ الحكاية. هنا يجتمع الشغف الرياضي وروح المجتمع  
+    تحت راية نادي شباب المدينة، حيث نصنع الذكريات ونمضي نحو المستقبل.  
+  </p>    <div class="hero-actions">  
+    <a href="/news" class="button button-white">اكتشف أخبار النادي</a>  
+    <a href="#about" class="button button-outline">تعرف على النادي</a>  
+  </div>  
+</div>    </div>  
+</section><section class="stats" aria-label="معلومات النادي">  
+  <div class="container stats-grid"><div class="stat">  
+  <strong>الدبة</strong>  
+  <span>موطن النادي</span>  
+</div>  <div class="stat">  
+  <strong>شباب المدينة</strong>  
+  <span>اسم يجمعنا</span>  
+</div>  <div class="stat">  
+  <strong>السودان</strong>  
+  <span>الانتماء والوطن</span>  
+</div>    </div>  
+</section><section class="section" id="news">  
+  <div class="container"><div class="section-heading">  
+  <div>  
+    <span class="section-label">المركز الإعلامي</span>  
+    <h2>أخبار النادي</h2>  
+    <p>تابع أخبار وفعاليات نادي شباب المدينة الدبة.</p>  
+  </div>  
+</div>  <div class="news-grid">    <article class="news-card">  
+    <div class="news-image">شباب المدينة</div>  
+    <div class="news-content">  
+      <span class="news-tag">أخبار النادي</span>  
+      <h3>مرحبًا بكم في الموقع الرسمي لنادي شباب المدينة</h3>  
+      <p>منصة النادي الإلكترونية ومساحة تجمع جماهيره ومحبيه.</p>  
+    </div>  
+  </article>    <article class="news-card">  
+    <div class="news-image light">المركز الإعلامي</div>  
+    <div class="news-content">  
+      <span class="news-tag">المركز الإعلامي</span>  
+      <h3>مساحة جديدة لأخبار الفريق وأنشطته</h3>  
+      <p>سيتم تخصيص هذا القسم لنشر الأخبار والتغطيات الإعلامية.</p>  
+    </div>  
+  </article>    <article class="news-card">  
+    <div class="news-image dark">جماهير المدينة</div>  
+    <div class="news-content">  
+      <span class="news-tag">مجتمع النادي</span>  
+      <h3>جماهيرنا جزء من حكاية النادي</h3>  
+      <p>مساحة للاحتفاء بالجماهير والمبادرات والأنشطة المجتمعية.</p>  
+    </div>  
+  </article>  </div>    </div>  
+</section><section class="section about" id="about">  
+  <div class="container about-inner"><div class="about-mark">  
+  <div>  
+    <strong>شباب المدينة</strong>  
+    <span>الدبة — الولاية الشمالية</span>  
+  </div>  
+</div>  <div class="about-text">  
+  <span class="section-label">هويتنا</span>  
+  <h2>نادي يجمعنا</h2>    <p>  
+    نادي شباب المدينة الدبة مساحة رياضية واجتماعية تجمع اللاعبين  
+    والجماهير ومحبي الرياضة، وتعمل على ترسيخ روح الانتماء والتعاون  
+    وتمثيل المدينة بصورة تليق بأهلها.  
+  </p>    <a href="#contact" class="button" style="background:var(--red);color:white">  
+    تواصل مع النادي  
+  </a>  
+</div>    </div>  
+</section><section class="section membership-section" id="membership">  
+  <div class="container"><div class="section-heading">  
+  <div>  
+    <span class="section-label">كن جزءًا من الحكاية</span>  
+    <h2>العضوية الإلكترونية</h2>  
+    <p>أدخل بياناتك لتقديم طلب عضوية في نادي شباب المدينة الدبة.</p>  
+  </div>  
+</div>  <div class="membership-box">    <div class="membership-intro">  
+    <h3>طلب عضوية نادي شباب المدينة</h3>  
+    <p>أكمل البيانات التالية ثم أرسل الطلب إلكترونيًا.</p>  
+  </div>    <div class="payment-details">  <div class="payment-row">  
+  <span>اسم الحساب</span>  
+  <strong>نادي شباب المدينة الدبة</strong>  
+</div>  
+
+<div class="payment-row">  
+  <span>البنك</span>  
+  <strong>بنك الخرطوم</strong>  
+</div>  
+
+<div class="payment-row">  
+  <span>رقم الحساب</span>  
+  <strong dir="ltr">3399226</strong>  
+</div>  
+
+<div class="payment-row">  
+  <span>رسوم العضوية</span>  
+  <strong>20,000 جنيه سوداني</strong>  
 </div>
 
-<!-- رأس الموقع بدون شعار -->
-<header>
-  <div class="container header-inner">
-    <a href="#home" class="brand">
-      <div class="brand-text">
-        <h1>نادي شباب المدينة</h1>
-        <p>الدبة · الولاية الشمالية · السودان</p>
-      </div>
-    </a>
-
-    <nav class="menu" aria-label="القائمة الرئيسية">
-      <a href="#home">الرئيسية</a>
-      <a href="/news">أخبار النادي</a>
-      <a href="#about">عن النادي</a>
-      <a href="/members.html">أعضاء النادي</a>
-      <a href="#contact">تواصل معنا</a>
-      <a href="#membership" class="membership">العضوية الإلكترونية</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-
-<!-- الواجهة الرئيسية -->
-<section class="hero" id="home">
-  <div class="container hero-inner">
-    <div class="hero-content">
-      <span class="eyebrow">أهلًا بكم في بيت المدينة</span>
-
-      <h2>
-        شباب المدينة<br>
-        <span>حكاية انتماء وطموح</span>
-      </h2>
-
-      <p>
-        من الدبة تبدأ الحكاية. هنا يجتمع الشغف الرياضي وروح المجتمع
-        تحت راية نادي شباب المدينة، حيث نصنع الذكريات ونمضي نحو المستقبل.
-      </p>
-
-      <div class="hero-actions">
-        <a href="/news" class="button button-white">اكتشف أخبار النادي</a>
-        <a href="#about" class="button button-outline">تعرف على النادي</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- معلومات النادي -->
-<section class="stats" aria-label="معلومات النادي">
-  <div class="container stats-grid">
-    <div class="stat">
-      <strong>الدبة</strong>
-      <span>موطن النادي</span>
-    </div>
-
-    <div class="stat">
-      <strong>شباب المدينة</strong>
-      <span>اسم يجمعنا</span>
-    </div>
-
-    <div class="stat">
-      <strong>السودان</strong>
-      <span>الانتماء والوطن</span>
-    </div>
-  </div>
-</section>
-
-<!-- أخبار النادي -->
-<section class="section" id="news">
-  <div class="container">
-    <div class="section-heading">
-      <div>
-        <span class="section-label">المركز الإعلامي</span>
-        <h2>أخبار النادي</h2>
-        <p>تابع أخبار وفعاليات نادي شباب المدينة الدبة.</p>
-      </div>
-    </div>
-
-    <div class="news-grid">
-      <article class="news-card">
-        <div class="news-image">شباب المدينة</div>
-        <div class="news-content">
-          <span class="news-tag">أخبار النادي</span>
-          <h3>مرحبًا بكم في الموقع الرسمي لنادي شباب المدينة</h3>
-          <p>منصة النادي الإلكترونية ومساحة تجمع جماهيره ومحبيه.</p>
-        </div>
-      </article>
-
-      <article class="news-card">
-        <div class="news-image light">المركز الإعلامي</div>
-        <div class="news-content">
-          <span class="news-tag">المركز الإعلامي</span>
-          <h3>مساحة جديدة لأخبار الفريق وأنشطته</h3>
-          <p>سيتم تخصيص هذا القسم لنشر الأخبار والتغطيات الإعلامية.</p>
-        </div>
-      </article>
-
-      <article class="news-card">
-        <div class="news-image dark">جماهير المدينة</div>
-        <div class="news-content">
-          <span class="news-tag">مجتمع النادي</span>
-          <h3>جماهيرنا جزء من حكاية النادي</h3>
-          <p>مساحة للاحتفاء بالجماهير والمبادرات والأنشطة المجتمعية.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- عن النادي -->
-<section class="section about" id="about">
-  <div class="container about-inner">
-    <div class="about-mark">
-      <div>
-        <strong>شباب المدينة</strong>
-        <span>الدبة — الولاية الشمالية</span>
-      </div>
-    </div>
-
-    <div class="about-text">
-      <span class="section-label">هويتنا</span>
-      <h2>نادي يجمعنا</h2>
-
-      <p>
-        نادي شباب المدينة الدبة مساحة رياضية واجتماعية تجمع اللاعبين
-        والجماهير ومحبي الرياضة، وتعمل على ترسيخ روح الانتماء والتعاون
-        وتمثيل المدينة بصورة تليق بأهلها.
-      </p>
-
-      <a href="#contact" class="button" style="background:var(--red);color:white">
-        تواصل مع النادي
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- العضوية الإلكترونية -->
-<section class="section membership-section" id="membership">
-  <div class="container">
-    <div class="section-heading">
-      <div>
-        <span class="section-label">كن جزءًا من الحكاية</span>
-        <h2>العضوية الإلكترونية</h2>
-        <p>أدخل بياناتك لتقديم طلب عضوية في نادي شباب المدينة الدبة.</p>
-      </div>
-    </div>
-
-    <div class="membership-box">
-      <div class="membership-intro">
-        <h3>طلب عضوية نادي شباب المدينة</h3>
-        <p>أكمل البيانات التالية ثم أرسل الطلب إلكترونيًا.</p>
-      </div>
-
-      <!-- بيانات الدفع -->
-      <div class="payment-details">
-        <div class="payment-row">
-          <span>اسم الحساب</span>
-          <strong>نادي شباب المدينة الدبة</strong>
-        </div>
-
-        <div class="payment-row">
-          <span>البنك</span>
-          <strong>بنك الخرطوم</strong>
-        </div>
-
-        <div class="payment-row">
-          <span>رقم الحساب</span>
-          <strong dir="ltr">3399226</strong>
-        </div>
-
-        <div class="payment-row">
-          <span>رسوم العضوية</span>
-          <strong>20,000 جنيه سوداني</strong>
-        </div>
-      </div>
-
-      <!-- نموذج العضوية -->
-      <form id="membershipForm" class="membership-form">
-
-        <div class="form-field">
-          <label for="full_name">الاسم الكامل *</label>
-          <input
-            type="text"
-            id="full_name"
-            name="full_name"
-            placeholder="أدخل اسمك الكامل"
-            minlength="3"
-            maxlength="150"
-            autocomplete="name"
-            required
-          >
-        </div>
-
-        <div class="form-field">
-          <label for="phone">رقم الهاتف *</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="أدخل رقم هاتفك"
-            minlength="6"
-            maxlength="30"
-            autocomplete="tel"
-            dir="ltr"
-            required
-          >
-        </div>
-
-        <div class="form-field">
-          <label for="address">العنوان *</label>
-          <input
-            type="text"
-            id="address"
-            name="address"
-            placeholder="المدينة والحي ومكان السكن"
-            minlength="2"
-            maxlength="200"
-            autocomplete="street-address"
-            required
-          >
-        </div>
-
-        <div class="form-field">
-          <label for="birth_date">تاريخ الميلاد *</label>
-          <input
-            type="date"
-            id="birth_date"
-            name="birth_date"
-            autocomplete="bday"
-            required
-          >
-        </div>
-
-        <div class="form-field">
-          <label for="occupation">المهنة *</label>
-          <input
-            type="text"
-            id="occupation"
-            name="occupation"
-            placeholder="مثال: طالب، موظف، عمل حر"
-            minlength="2"
-            maxlength="100"
-            required
-          >
-        </div>
-
-        <div class="form-field">
-          <label for="membership_type">نوع العضوية *</label>
-          <select id="membership_type" name="membership_type" required>
-            <option value="">اختر نوع العضوية</option>
-            <option value="عضو عامل">عضو عامل</option>
-            <option value="عضو منتسب">عضو منتسب</option>
-          </select>
-
-          <p class="form-note">
-            اختر نوع العضوية المناسب لك وفقًا للوائح النادي.
-          </p>
-        </div>
-
-        <div class="form-field">
-          <label for="payment_reference">رقم مرجع الدفع (اختياري)</label>
-          <input
-            type="text"
-            id="payment_reference"
-            name="payment_reference"
-            placeholder="أدخل رقم عملية التحويل إن توفر"
-            maxlength="100"
-          >
-
-          <p class="form-note">
-            سيُدرج رقم المرجع في رسالة واتساب، لكنه لا يُحفظ في قاعدة البيانات الحالية.
-          </p>
-        </div>
-
-        <button type="submit" id="submitButton" class="membership-submit">
-          إرسال طلب العضوية
-        </button>
-      </form>
-
-      <div
-        id="membershipMessage"
-        class="membership-message"
-        role="status"
-        aria-live="polite"
-      ></div>
-
-      <div id="whatsappArea" hidden>
-        <a
-          id="whatsappButton"
-          class="whatsapp-button"
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          إرسال إشعار الدفع عبر واتساب
-        </a>
-
-        <p class="form-note" style="margin-top:10px">
-          بعد فتح واتساب، راجع الرسالة وأرسلها، وأرفق صورة إيصال التحويل بنفسك.
-          اعتماد العضوية النهائي يتطلب مراجعة الدفع من إدارة النادي.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- تذييل الموقع -->
-<footer id="contact">
-  <div class="container">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <h2>نادي شباب المدينة الدبة</h2>
-        <p>
-          الموقع الإلكتروني للنادي ومساحته الرسمية للتواصل مع الجماهير
-          ومتابعة الأخبار والأنشطة.
-        </p>
-      </div>
-
-      <nav class="footer-links" aria-label="روابط الموقع">
-        <a href="#home">الرئيسية</a>
-        <a href="/news">الأخبار</a>
-        <a href="#about">عن النادي</a>
-        <a href="/members.html">أعضاء النادي</a>
-        <a href="#membership">العضوية الإلكترونية</a>
-      </nav>
-    </div>
-
-    <div class="copyright">
-      جميع الحقوق محفوظة لنادي شباب المدينة الدبة © 2026
-    </div>
-  </div>
-</footer>
-
-<script>
-(() => {
-  const form = document.getElementById("membershipForm");
-  const submitButton = document.getElementById("submitButton");
-  const messageBox = document.getElementById("membershipMessage");
-  const whatsappArea = document.getElementById("whatsappArea");
-  const whatsappButton = document.getElementById("whatsappButton");
-
-  const whatsappNumber = "249100272661";
-  const birthDateInput = document.getElementById("birth_date");
-
-  birthDateInput.max = new Date().toISOString().slice(0, 10);
-
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    messageBox.className = "membership-message";
-    messageBox.textContent = "";
-    whatsappArea.hidden = true;
-
-    const fullName = document.getElementById("full_name").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const address = document.getElementById("address").value.trim();
-    const birthDate = birthDateInput.value;
-    const occupation = document.getElementById("occupation").value.trim();
-    const membershipType = document.getElementById("membership_type").value;
-    const paymentReference = document.getElementById("payment_reference").value.trim();
-
-    if (fullName.length < 3 || fullName.length > 150) {
-      showMessage("يرجى إدخال الاسم الكامل بصورة صحيحة.", "error");
-      return;
-    }
-
-    if (phone.length < 6 || phone.length > 30) {
-      showMessage("يرجى إدخال رقم هاتف صحيح.", "error");
-      return;
-    }
-
-    if (address.length < 2 || address.length > 200) {
-      showMessage("يرجى إدخال العنوان بصورة صحيحة.", "error");
-      return;
-    }
-
-    if (!birthDate || birthDate > birthDateInput.max) {
-      showMessage("يرجى إدخال تاريخ ميلاد صحيح.", "error");
-      return;
-    }
-
-    if (occupation.length < 2 || occupation.length > 100) {
-      showMessage("يرجى إدخال المهنة.", "error");
-      return;
-    }
-
-    if (!["عضو عامل", "عضو منتسب"].includes(membershipType)) {
-      showMessage("يرجى اختيار نوع العضوية.", "error");
-      return;
-    }
-
-    submitButton.disabled = true;
-    submitButton.textContent = "جارٍ إرسال الطلب...";
-
-    try {
-      const response = await fetch("/api/membership", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          full_name: fullName,
-          phone: phone,
-          address: address,
-          birth_date: birthDate,
-          occupation: occupation,
-          membership_type: membershipType
-        })
-      });
-
-      let result;
-
-      try {
-        result = await response.json();
-      } catch {
-        throw new Error("تعذر قراءة استجابة الخادم. يرجى المحاولة لاحقًا.");
-      }
-
-      if (!response.ok || !result.success) {
-        throw new Error(
-          result.message || "تعذر تسجيل الطلب. يرجى المحاولة لاحقًا."
-        );
-      }
-
-      const whatsappText = [
-        "السلام عليكم، أرسل إشعار دفع رسوم عضوية نادي شباب المدينة الدبة.",
-        "",
-        "الاسم: " + fullName,
-        "رقم الهاتف: " + phone,
-        "العنوان: " + address,
-        "تاريخ الميلاد: " + birthDate,
-        "المهنة: " + occupation,
-        "نوع العضوية: " + membershipType,
-        "",
-        "رسوم العضوية: 20,000 جنيه سوداني",
-        "البنك: بنك الخرطوم",
-        "اسم الحساب: نادي شباب المدينة الدبة",
-        "رقم الحساب: 3399226",
-        "رقم مرجع الدفع: " + (
-          paymentReference || "سأرفق الإيصال في واتساب"
-        ),
-        "",
-        "يرجى مراجعة طلب العضوية وإشعار الدفع."
-      ].join("\n");
-
-      whatsappButton.href =
-        "https://wa.me/" +
-        whatsappNumber +
-        "?text=" +
-        encodeURIComponent(whatsappText);
-
-      showMessage(
-        "تم تسجيل طلبك بنجاح. اضغط على زر واتساب لإرسال إشعار الدفع وإرفاق الإيصال.",
-        "success"
-      );
-
-      whatsappArea.hidden = false;
-      form.reset();
-
-    } catch (error) {
-      showMessage(
-        error.message ||
-        "تعذر إرسال الطلب. تحقق من اتصال الإنترنت وحاول مرة أخرى.",
-        "error"
-      );
-
-    } finally {
-      submitButton.disabled = false;
-      submitButton.textContent = "إرسال طلب العضوية";
-    }
-  });
-
-  function showMessage(text, type) {
-    messageBox.textContent = text;
-    messageBox.className = "membership-message " + type;
-  }
+  </div>    <form id="membershipForm" class="membership-form">  <div class="form-field">  
+  <label for="full_name">الاسم الكامل *</label>  
+  <input type="text" id="full_name" name="full_name"  
+    placeholder="أدخل اسمك الكامل" minlength="3"  
+    maxlength="150" autocomplete="name" required>  
+</div>  
+
+<div class="form-field">  
+  <label for="phone">رقم الهاتف *</label>  
+  <input type="tel" id="phone" name="phone"  
+    placeholder="أدخل رقم هاتفك" minlength="6"  
+    maxlength="30" autocomplete="tel" dir="ltr" required>  
+</div>  
+
+<div class="form-field">  
+  <label for="address">العنوان *</label>  
+  <input type="text" id="address" name="address"  
+    placeholder="المدينة والحي ومكان السكن" minlength="2"  
+    maxlength="200" autocomplete="street-address" required>  
+</div>  
+
+<div class="form-field">  
+  <label for="birth_date">تاريخ الميلاد *</label>  
+  <input type="date" id="birth_date" name="birth_date"  
+    autocomplete="bday" required>  
+</div>  
+
+<div class="form-field">  
+  <label for="occupation">المهنة *</label>  
+  <input type="text" id="occupation" name="occupation"  
+    placeholder="مثال: طالب، موظف، عمل حر"  
+    minlength="2" maxlength="100" required>  
+</div>  
+
+<div class="form-field">  
+  <label for="membership_type">نوع العضوية *</label>  
+  <select id="membership_type" name="membership_type" required>  
+    <option value="">اختر نوع العضوية</option>  
+    <option value="عضو عامل">عضو عامل</option>  
+    <option value="عضو منتسب">عضو منتسب</option>  
+  </select>  
+  <p class="form-note">  
+    اختر نوع العضوية المناسب لك وفقًا للوائح النادي.  
+  </p>  
+</div>  
+
+<div class="form-field">  
+  <label for="payment_reference">رقم مرجع الدفع (اختياري)</label>  
+  <input type="text" id="payment_reference"  
+    name="payment_reference"  
+    placeholder="أدخل رقم عملية التحويل إن توفر"  
+    maxlength="100">  
+  <p class="form-note">  
+    سيُدرج رقم المرجع في رسالة واتساب، لكنه لا يُحفظ في قاعدة البيانات الحالية.  
+  </p>  
+</div>  
+
+<button type="submit" id="submitButton" class="membership-submit">  
+  إرسال طلب العضوية  
+</button>
+
+  </form>    <div id="membershipMessage" class="membership-message"  
+    role="status" aria-live="polite"></div>    <div id="whatsappArea" hidden>  
+    <a id="whatsappButton" class="whatsapp-button"  
+      href="#" target="_blank" rel="noopener noreferrer">  
+      إرسال إشعار الدفع عبر واتساب  
+    </a>  <p class="form-note" style="margin-top:10px">  
+  بعد فتح واتساب، راجع الرسالة وأرسلها، وأرفق صورة إيصال التحويل بنفسك.  
+  اعتماد العضوية النهائي يتطلب مراجعة الدفع من إدارة النادي.  
+</p>
+
+  </div>  </div>    </div>  
+</section></main><footer id="contact">  
+  <div class="container"><div class="footer-top">    <div class="footer-brand">  
+    <h2>نادي شباب المدينة الدبة</h2>  
+    <p>  
+      الموقع الإلكتروني للنادي ومساحته الرسمية للتواصل مع الجماهير  
+      ومتابعة الأخبار والأنشطة.  
+    </p>  
+  </div>    <nav class="footer-links" aria-label="روابط الموقع">  
+    <a href="#home">الرئيسية</a>  
+    <a href="/news">الأخبار</a>  
+    <a href="#about">عن النادي</a>  
+    <a href="/members.html">أعضاء النادي</a>  
+    <a href="#membership">العضوية الإلكترونية</a>  
+  </nav>  </div>  <div class="copyright">  
+  جميع الحقوق محفوظة لنادي شباب المدينة الدبة © 2026  
+</div>    </div>  
+</footer><script>  
+(() => {  
+  const form = document.getElementById("membershipForm");  
+  const submitButton = document.getElementById("submitButton");  
+  const messageBox = document.getElementById("membershipMessage");  
+  const whatsappArea = document.getElementById("whatsappArea");  
+  const whatsappButton = document.getElementById("whatsappButton");  const whatsappNumber = "249100272661";
+
+const birthDateInput = document.getElementById("birth_date");
+birthDateInput.max = new Date().toISOString().slice(0, 10);
+
+form.addEventListener("submit", async (event) => {
+event.preventDefault();
+
+messageBox.className = "membership-message";  
+messageBox.textContent = "";  
+whatsappArea.hidden = true;  
+
+const fullName = document.getElementById("full_name").value.trim();  
+const phone = document.getElementById("phone").value.trim();  
+const address = document.getElementById("address").value.trim();  
+const birthDate = document.getElementById("birth_date").value;  
+const occupation = document.getElementById("occupation").value.trim();  
+const membershipType = document.getElementById("membership_type").value;  
+const paymentReference = document.getElementById("payment_reference").value.trim();  
+
+if (fullName.length < 3 || fullName.length > 150) {  
+  showMessage("يرجى إدخال الاسم الكامل بصورة صحيحة.", "error");  
+  return;  
+}  
+
+if (phone.length < 6 || phone.length > 30) {  
+  showMessage("يرجى إدخال رقم هاتف صحيح.", "error");  
+  return;  
+}  
+
+if (address.length < 2 || address.length > 200) {  
+  showMessage("يرجى إدخال العنوان بصورة صحيحة.", "error");  
+  return;  
+}  
+
+if (!birthDate || birthDate > birthDateInput.max) {  
+  showMessage("يرجى إدخال تاريخ ميلاد صحيح.", "error");  
+  return;  
+}  
+
+if (occupation.length < 2 || occupation.length > 100) {  
+  showMessage("يرجى إدخال المهنة.", "error");  
+  return;  
+}  
+
+if (!["عضو عامل", "عضو منتسب"].includes(membershipType)) {  
+  showMessage("يرجى اختيار نوع العضوية.", "error");  
+  return;  
+}  
+
+submitButton.disabled = true;  
+submitButton.textContent = "جارٍ إرسال الطلب...";  
+
+try {  
+  const response = await fetch("/api/membership", {  
+    method: "POST",  
+    headers: {  
+      "Content-Type": "application/json"  
+    },  
+    body: JSON.stringify({  
+      full_name: fullName,  
+      phone: phone,  
+      address: address,  
+      birth_date: birthDate,  
+      occupation: occupation,  
+      membership_type: membershipType  
+    })  
+  });  
+
+  let result;  
+
+  try {  
+    result = await response.json();  
+  } catch {  
+    throw new Error("تعذر قراءة استجابة الخادم. يرجى المحاولة لاحقًا.");  
+  }  
+
+  if (!response.ok || !result.success) {  
+    throw new Error(  
+      result.message || "تعذر تسجيل الطلب. يرجى المحاولة لاحقًا."  
+    );  
+  }  
+
+  const whatsappText = [  
+    "السلام عليكم، أرسل إشعار دفع رسوم عضوية نادي شباب المدينة الدبة.",  
+    "",  
+    "الاسم: " + fullName,  
+    "رقم الهاتف: " + phone,  
+    "العنوان: " + address,  
+    "تاريخ الميلاد: " + birthDate,  
+    "المهنة: " + occupation,  
+    "نوع العضوية: " + membershipType,  
+    "",  
+    "رسوم العضوية: 20,000 جنيه سوداني",  
+    "البنك: بنك الخرطوم",  
+    "اسم الحساب: نادي شباب المدينة الدبة",  
+    "رقم الحساب: 3399226",  
+    "رقم مرجع الدفع: " + (paymentReference || "سأرفق الإيصال في واتساب"),  
+    "",  
+    "يرجى مراجعة طلب العضوية وإشعار الدفع."  
+  ].join("\n");  
+
+  whatsappButton.href =  
+    "https://wa.me/" + whatsappNumber +  
+    "?text=" + encodeURIComponent(whatsappText);  
+
+  showMessage(  
+    "تم تسجيل طلبك بنجاح. اضغط على زر واتساب لإرسال إشعار الدفع وإرفاق الإيصال.",  
+    "success"  
+  );  
+
+  whatsappArea.hidden = false;  
+  form.reset();  
+
+} catch (error) {  
+  showMessage(  
+    error.message || "تعذر إرسال الطلب. تحقق من اتصال الإنترنت وحاول مرة أخرى.",  
+    "error"  
+  );  
+} finally {  
+  submitButton.disabled = false;  
+  submitButton.textContent = "إرسال طلب العضوية";  
+}
+
+});
+
+function showMessage(text, type) {
+messageBox.textContent = text;
+messageBox.className = "membership-message " + type;
+}
 })();
-</script>
+</script></body>
 
-</body>
 </html>
