@@ -726,80 +726,46 @@ header {
 
         <div class="form-field">
           <label for="full_name">الاسم الكامل *</label>
-          <input
-            type="text"
-            id="full_name"
-            name="full_name"
-            placeholder="أدخل اسمك الكامل"
-            minlength="3"
-            maxlength="150"
-            autocomplete="name"
-            required
-          >
+          <input type="text" id="full_name" name="full_name"
+            placeholder="أدخل اسمك الكامل" minlength="3"
+            maxlength="150" autocomplete="name" required>
         </div>
 
         <div class="form-field">
           <label for="phone">رقم الهاتف *</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="أدخل رقم هاتفك"
-            minlength="6"
-            maxlength="30"
-            autocomplete="tel"
-            dir="ltr"
-            required
-          >
+          <input type="tel" id="phone" name="phone"
+            placeholder="أدخل رقم هاتفك" minlength="6"
+            maxlength="30" autocomplete="tel" dir="ltr" required>
         </div>
 
         <div class="form-field">
           <label for="address">العنوان *</label>
-          <input
-            type="text"
-            id="address"
-            name="address"
+          <input type="text" id="address" name="address"
             placeholder="المدينة والحي ومكان السكن"
-            minlength="2"
-            maxlength="200"
-            autocomplete="street-address"
-            required
-          >
+            minlength="2" maxlength="200"
+            autocomplete="street-address" required>
         </div>
 
         <div class="form-field">
           <label for="birth_date">تاريخ الميلاد *</label>
-          <input
-            type="date"
-            id="birth_date"
-            name="birth_date"
-            autocomplete="bday"
-            required
-          >
+          <input type="date" id="birth_date" name="birth_date"
+            autocomplete="bday" required>
         </div>
 
         <div class="form-field">
           <label for="occupation">المهنة *</label>
-          <input
-            type="text"
-            id="occupation"
-            name="occupation"
+          <input type="text" id="occupation" name="occupation"
             placeholder="مثال: طالب، موظف، عمل حر"
-            minlength="2"
-            maxlength="100"
-            required
-          >
+            minlength="2" maxlength="100" required>
         </div>
 
         <div class="form-field">
           <label for="membership_type">نوع العضوية *</label>
-
           <select id="membership_type" name="membership_type" required>
             <option value="">اختر نوع العضوية</option>
             <option value="عضو عامل">عضو عامل</option>
             <option value="عضو منتسب">عضو منتسب</option>
           </select>
-
           <p class="form-note">
             اختر نوع العضوية المناسب لك وفقًا للوائح النادي.
           </p>
@@ -807,45 +773,27 @@ header {
 
         <div class="form-field">
           <label for="payment_reference">رقم مرجع الدفع (اختياري)</label>
-
-          <input
-            type="text"
-            id="payment_reference"
+          <input type="text" id="payment_reference"
             name="payment_reference"
             placeholder="أدخل رقم عملية التحويل إن توفر"
-            maxlength="100"
-          >
-
+            maxlength="100">
           <p class="form-note">
             سيُدرج رقم المرجع في رسالة واتساب، لكنه لا يُحفظ في قاعدة البيانات الحالية.
           </p>
         </div>
 
-        <button
-          type="submit"
-          id="submitButton"
-          class="membership-submit"
-        >
+        <button type="submit" id="submitButton" class="membership-submit">
           إرسال طلب العضوية
         </button>
 
       </form>
 
-      <div
-        id="membershipMessage"
-        class="membership-message"
-        role="status"
-        aria-live="polite"
-      ></div>
+      <div id="membershipMessage" class="membership-message"
+        role="status" aria-live="polite"></div>
 
       <div id="whatsappArea" hidden>
-        <a
-          id="whatsappButton"
-          class="whatsapp-button"
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a id="whatsappButton" class="whatsapp-button"
+          href="#" target="_blank" rel="noopener noreferrer">
           إرسال إشعار الدفع عبر واتساب
         </a>
 
@@ -1137,7 +1085,8 @@ footer {
     const birthDate = document.getElementById("birth_date").value;
     const occupation = document.getElementById("occupation").value.trim();
     const membershipType = document.getElementById("membership_type").value;
-    const paymentReference = document.getElementById("payment_reference").value.trim();
+    const paymentReference =
+      document.getElementById("payment_reference").value.trim();
 
     if (fullName.length < 3 || fullName.length > 150) {
       showMessage("يرجى إدخال الاسم الكامل بصورة صحيحة.", "error");
@@ -1253,6 +1202,9 @@ footer {
   }
 })();
 </script>
+
+<!-- تحميل الشعار الأصلي -->
+<script src="/logo.js"></script>
 
 </body>
 </html>
